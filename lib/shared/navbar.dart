@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../screens/blogPage.dart';
 
 class NavBar extends StatelessWidget {
@@ -26,47 +27,62 @@ class NavBar extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                        padding: EdgeInsets.only(right: 20),
-                        child: Text("MB",
-                            style: GoogleFonts.lato(
-                              textStyle: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 40,
-                                  letterSpacing: -10),
-                            ))),
-                    navLinks(context, "HOME"),
-                    navLinks(context, "BLOGS"),
-                    navLinks(context, "MOVIES/SERIES"),
-                    navLinks(context, "CHAT FORUM"),
-                    navLinks(context, "ABOUT US"),
-                  ],
-                ),
-                InkWell(
-                  hoverColor: Colors.red[200].withOpacity(0.9),
-                  onTap: () {
-                    print("Login Button tapped!");
-                  },
-                  child: Container(
-                    width: 130,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        color: Colors.brown[200],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Center(
-                        child: Text("Login/Sign-up",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                letterSpacing: 1.05,
-                                fontWeight: FontWeight.bold))),
-                  ),
-                )
+                Container(
+                    padding: EdgeInsets.only(right: 20),
+                    child: Text("MB",
+                        style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 40,
+                              letterSpacing: -10),
+                        ))),
+                screenWidth < 815
+                    ? Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            IconButton(
+                                icon: Icon(Icons.menu),
+                                onPressed: () {
+                                  Scaffold.of(context).openEndDrawer();
+                                }),
+                          ],
+                        ),
+                      )
+                    : Expanded(
+                        child: Row(
+                          children: [
+                            navLinks(context, "HOME"),
+                            navLinks(context, "BLOGS"),
+                            navLinks(context, "MOVIES/SERIES"),
+                            navLinks(context, "CHAT FORUM"),
+                            navLinks(context, "ABOUT US"),
+                            Spacer(),
+                            InkWell(
+                              hoverColor: Colors.red[200].withOpacity(0.9),
+                              onTap: () {
+                                print("Login Button tapped!");
+                              },
+                              child: Container(
+                                width: 130,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    color: Colors.brown[200],
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                    child: Text("Login/Sign-up",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15,
+                                            letterSpacing: 1.05,
+                                            fontWeight: FontWeight.bold))),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
               ],
             ),
           ),
@@ -75,7 +91,7 @@ class NavBar extends StatelessWidget {
 
   Widget navLinks(BuildContext context, String name) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.5),
       child: InkWell(
         onTap: () {
           Navigator.push(

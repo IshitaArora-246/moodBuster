@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/home.dart';
+import 'package:moodbuster/screens/dashboard.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: GoogleFonts.latoTextTheme(),
       ),
-      home: Home(),
+      home: DashBoard(),
     );
   }
 }
