@@ -1,10 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:moodbuster/shared/dashboard.dart';
+import 'package:moodbuster/widgets/navItems.dart';
 
-import '../screens/blogPage.dart';
+class NavBar extends StatefulWidget {
+  NavBar({
+    Key key,
+    @required this.parent,
+  }) : super(key: key);
+  final DashBoardState parent;
 
-class NavBar extends StatelessWidget {
-  const NavBar({Key key}) : super(key: key);
+  @override
+  _NavBarState createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  List navItems;
+  @override
+  void initState() {
+    super.initState();
+    navItems = [
+      {
+        'name': 'Home',
+        'onTap': () {
+          widget.parent.setState(() {
+            widget.parent.currentPage = 'home';
+          });
+        },
+      },
+      {
+        'name': 'Blogs',
+        'onTap': () {
+          widget.parent.setState(() {
+            widget.parent.currentPage = 'blog';
+          });
+        },
+      },
+      {
+        'name': 'Movies/Series',
+        'onTap': () {
+          widget.parent.setState(() {
+            widget.parent.currentPage = 'suggestion';
+          });
+        },
+      },
+      {
+        'name': 'Chat Forum',
+        'onTap': () {
+          widget.parent.setState(() {
+            widget.parent.currentPage = 'chat';
+          });
+        },
+      },
+      {
+        'name': 'About Us',
+        'onTap': () {
+          widget.parent.setState(() {
+            widget.parent.currentPage = 'about';
+          });
+        },
+      },
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +111,10 @@ class NavBar extends StatelessWidget {
                     : Expanded(
                         child: Row(
                           children: [
-                            navLinks(context, "HOME"),
-                            navLinks(context, "BLOGS"),
-                            navLinks(context, "MOVIES/SERIES"),
-                            navLinks(context, "CHAT FORUM"),
-                            navLinks(context, "ABOUT US"),
+                            ...navItems.map((e) => NavItem(
+                                  name: e['name'],
+                                  onTap: e['onTap'],
+                                )),
                             Spacer(),
                             InkWell(
                               hoverColor: Colors.red[200].withOpacity(0.9),
@@ -87,24 +143,5 @@ class NavBar extends StatelessWidget {
             ),
           ),
         ));
-  }
-
-  Widget navLinks(BuildContext context, String name) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.5),
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => BlogPage()));
-        },
-        child: Container(
-            child: Text(name,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    letterSpacing: 1.1,
-                    fontWeight: FontWeight.w600))),
-      ),
-    );
   }
 }

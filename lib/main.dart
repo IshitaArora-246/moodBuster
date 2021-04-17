@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moodbuster/screens/dashboard.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:moodbuster/shared/dashboard.dart';
 
 void main() async {
   runApp(MyApp());
