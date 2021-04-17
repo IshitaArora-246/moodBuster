@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:moodbuster/shared/dashboard.dart';
-import 'package:moodbuster/widgets/navItems.dart';
+import 'package:moodbuster/screens/Login.dart';
+import 'package:moodbuster/screens/dashboard.dart';
+import 'package:moodbuster/widgets/nav_item.dart';
 
 class NavBar extends StatefulWidget {
   NavBar({
@@ -16,6 +17,8 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   List navItems;
+  Color tan = Color(0XFFC19A6B);
+
   @override
   void initState() {
     super.initState();
@@ -117,15 +120,18 @@ class _NavBarState extends State<NavBar> {
                                 )),
                             Spacer(),
                             InkWell(
-                              hoverColor: Colors.red[200].withOpacity(0.9),
                               onTap: () {
                                 print("Login Button tapped!");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginPage()));
                               },
                               child: Container(
                                 width: 130,
                                 height: 40,
                                 decoration: BoxDecoration(
-                                    color: Colors.brown[200],
+                                    color: tan,
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Center(
                                     child: Text("Login/Sign-up",

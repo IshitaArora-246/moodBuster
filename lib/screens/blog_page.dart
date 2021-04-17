@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:moodbuster/shared/navbar.dart';
 
 class BlogPage extends StatelessWidget {
   const BlogPage({Key key}) : super(key: key);

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:moodbuster/shared/navbar.dart';
 
 class ChatForum extends StatelessWidget {
   const ChatForum({Key key}) : super(key: key);

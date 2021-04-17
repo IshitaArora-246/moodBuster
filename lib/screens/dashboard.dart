@@ -5,7 +5,8 @@ import 'package:moodbuster/screens/blog_page.dart';
 import 'package:moodbuster/screens/chat_forum.dart';
 import 'package:moodbuster/screens/home_page.dart';
 import 'package:moodbuster/screens/suggestions_page.dart';
-import 'package:moodbuster/shared/navbar.dart';
+import 'package:moodbuster/widgets/my_drawer.dart';
+import 'package:moodbuster/widgets/navbar.dart';
 
 class DashBoard extends StatefulWidget {
   DashBoard({Key key}) : super(key: key);
@@ -16,6 +17,54 @@ class DashBoard extends StatefulWidget {
 
 class DashBoardState extends State<DashBoard> {
   String currentPage = 'home';
+  List navItems;
+
+  @override
+  void initState() {
+    super.initState();
+    navItems = [
+      {
+        'name': 'Home',
+        'onTap': () {
+          setState(() {
+            currentPage = 'home';
+          });
+        },
+      },
+      {
+        'name': 'Blogs',
+        'onTap': () {
+          setState(() {
+            currentPage = 'blog';
+          });
+        },
+      },
+      {
+        'name': 'Movies/Series',
+        'onTap': () {
+          setState(() {
+            currentPage = 'suggestion';
+          });
+        },
+      },
+      {
+        'name': 'Chat Forum',
+        'onTap': () {
+          setState(() {
+            currentPage = 'chat';
+          });
+        },
+      },
+      {
+        'name': 'About Us',
+        'onTap': () {
+          setState(() {
+            currentPage = 'about';
+          });
+        },
+      },
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,26 +76,9 @@ class DashBoardState extends State<DashBoard> {
 
     return Scaffold(
       endDrawer: showDrawer
-          ? Container(
-              width: screenWidth * 0.6,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                    Colors.white.withOpacity(0.9),
-                    Colors.white.withOpacity(0.8)
-                  ])),
-              child: ListView(
-                children: [
-                  SizedBox(height: 100),
-                  drawerItems(context, "HOME"),
-                  drawerItems(context, "BLOGS"),
-                  drawerItems(context, "MOVIES/SERIES"),
-                  drawerItems(context, "CHAT FORUM"),
-                  drawerItems(context, "ABOUT US")
-                ],
-              ))
+          ? MyDrawer(
+              navItems: navItems,
+            )
           : null,
       body: Container(
           height: screenHeight,
@@ -54,28 +86,19 @@ class DashBoardState extends State<DashBoard> {
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
-              Container(
-                height: screenHeight,
-                width: screenWidth,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/home_bg.jpg"),
-                        fit: BoxFit.cover)),
-              ),
               getCurrentPage(currentPage),
               NavBar(
                 parent: this,
               ),
+              TextButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) => Dialog());
+                  },
+                  child: Text("Press"))
             ],
           )),
-    );
-  }
-
-  Widget drawerItems(context, String pageTitle) {
-    return ListTile(
-      title: Text(pageTitle,
-          style: TextStyle(
-              fontSize: 20, letterSpacing: -1, fontWeight: FontWeight.bold)),
     );
   }
 
