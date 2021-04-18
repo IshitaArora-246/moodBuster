@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:moodbuster/screens/dashboard.dart';
@@ -39,26 +41,10 @@ class _NavBarState extends State<NavBar> {
         },
       },
       {
-        'name': 'Movies/Series',
-        'onTap': () {
-          widget.parent.setState(() {
-            widget.parent.currentPage = 'suggestion';
-          });
-        },
-      },
-      {
         'name': 'Chat Forum',
         'onTap': () {
           widget.parent.setState(() {
             widget.parent.currentPage = 'chat';
-          });
-        },
-      },
-      {
-        'name': 'About Us',
-        'onTap': () {
-          widget.parent.setState(() {
-            widget.parent.currentPage = 'about';
           });
         },
       },
@@ -69,6 +55,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    print(screenWidth);
     return Container(
         height: screenHeight * 0.1,
         width: screenWidth,
@@ -97,7 +84,7 @@ class _NavBarState extends State<NavBar> {
                               fontSize: 40,
                               letterSpacing: -10),
                         ))),
-                screenWidth < 815
+                screenWidth < 500
                     ? Expanded(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -152,156 +139,162 @@ class _NavBarState extends State<NavBar> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     Dialog dialog = Dialog(
+      backgroundColor: Colors.transparent,
       insetPadding: EdgeInsets.only(bottom: 50, right: 15),
-      child: Center(
-        child: Container(
-          height: screenHeight * 0.7,
-          width: screenWidth * 0.4,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.grey.withOpacity(0.9),
-          ),
-          child: Form(
-              child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Spacer(),
-                    Center(
-                      child: Text("Sign-up",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w500,
-                          )),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+        child: Center(
+          child: Container(
+            height: screenHeight * 0.7,
+            width: screenWidth * 0.4,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+            ),
+            child: Form(
+                child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Spacer(),
+                      Center(
+                        child: Text("Sign-up",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w500,
+                            )),
+                      ),
+                      Spacer(),
+                      IconButton(
+                          icon: Icon(Icons.close),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          }),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  TextFormField(
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 2, color: Colors.grey.shade400)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        width: 2,
+                        color: tan.withOpacity(0.5),
+                      )),
+                      labelText: "Email Address",
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey.shade500,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.mail_outline_rounded,
+                        color: Colors.grey.shade700,
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)),
                     ),
-                    Spacer(),
-                    IconButton(
-                        icon: Icon(Icons.close),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        }),
-                  ],
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 2, color: Colors.grey.shade400)),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      width: 2,
-                      color: tan.withOpacity(0.5),
-                    )),
-                    labelText: "Email Address",
-                    labelStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey.shade500,
+                  ),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 2, color: Colors.grey.shade400)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        width: 2,
+                        color: tan.withOpacity(0.5),
+                      )),
+                      labelText: "Password",
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey.shade500,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.lock_outline_rounded,
+                        color: Colors.grey.shade700,
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)),
                     ),
-                    prefixIcon: Icon(
-                      Icons.mail_outline_rounded,
-                      color: Colors.grey.shade700,
-                    ),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
                   ),
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  style: TextStyle(fontWeight: FontWeight.w500),
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 2, color: Colors.grey.shade400)),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      width: 2,
-                      color: tan.withOpacity(0.5),
-                    )),
-                    labelText: "Password",
-                    labelStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey.shade500,
-                    ),
-                    prefixIcon: Icon(
-                      Icons.lock_outline_rounded,
-                      color: Colors.grey.shade700,
-                    ),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  width: screenWidth,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: Colors.green,
-                  ),
-                  child: TextButton(
-                    onPressed: () {},
-                    child: Text("Login",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white)),
-                  ),
-                ),
-                Row(children: <Widget>[
-                  Expanded(
-                    child: Container(
-                        margin: const EdgeInsets.only(left: 10.0, right: 15.0),
-                        child: Divider(
-                          color: Colors.grey,
-                          height: 50,
-                        )),
-                  ),
-                  Text("OR",
-                      style: TextStyle(
-                          color: Colors.grey[800],
-                          fontWeight: FontWeight.bold)),
-                  Expanded(
-                    child: Container(
-                        margin: const EdgeInsets.only(left: 15.0, right: 10.0),
-                        child: Divider(
-                          color: Colors.grey,
-                          height: 50,
-                        )),
-                  ),
-                ]),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
+                  SizedBox(height: 10),
+                  Container(
                     width: screenWidth,
                     height: 50,
                     decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: Colors.grey[500]),
-                        borderRadius: BorderRadius.circular(4)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.symmetric(horizontal: 8),
-                            child: Image.asset(
-                              "assets/images/google.png",
-                              width: 30,
-                              height: 30,
-                            )),
-                        Center(
-                            child: Text("Sign-in with google",
-                                style: TextStyle(fontSize: 20))),
-                      ],
+                      borderRadius: BorderRadius.circular(4),
+                      color: Colors.green,
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text("Login",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white)),
                     ),
                   ),
-                )
-              ],
-            ),
-          )),
+                  Row(children: <Widget>[
+                    Expanded(
+                      child: Container(
+                          margin:
+                              const EdgeInsets.only(left: 10.0, right: 15.0),
+                          child: Divider(
+                            color: Colors.grey,
+                            height: 50,
+                          )),
+                    ),
+                    Text("OR",
+                        style: TextStyle(
+                            color: Colors.grey[800],
+                            fontWeight: FontWeight.bold)),
+                    Expanded(
+                      child: Container(
+                          margin:
+                              const EdgeInsets.only(left: 15.0, right: 10.0),
+                          child: Divider(
+                            color: Colors.grey,
+                            height: 50,
+                          )),
+                    ),
+                  ]),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: screenWidth,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2, color: Colors.grey[500]),
+                          borderRadius: BorderRadius.circular(4)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              padding: EdgeInsets.symmetric(horizontal: 8),
+                              child: Image.asset(
+                                "assets/images/google.png",
+                                width: 30,
+                                height: 30,
+                              )),
+                          Center(
+                              child: Text("Sign-in with google",
+                                  style: TextStyle(fontSize: 20))),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )),
+          ),
         ),
       ),
     );

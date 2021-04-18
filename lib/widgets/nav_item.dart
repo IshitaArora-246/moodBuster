@@ -12,7 +12,7 @@ class NavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.5),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: InkWell(
         onTap: onTap,
         child: Container(

@@ -14,7 +14,7 @@ class MyDrawer extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Container(
-        width: screenWidth * 0.4,
+        width: screenWidth * 0.5,
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,

@@ -1,9 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
+  HomePage({
     Key key,
   }) : super(key: key);
 
@@ -22,15 +23,24 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AutoSizeText("Mood Buster",
-              maxLines: 1,
-              style:
-                  GoogleFonts.rougeScript(textStyle: TextStyle(fontSize: 110))),
+          screenWidth < 500
+              ? AutoSizeText("Mood Buster",
+                  maxLines: 1,
+                  style: GoogleFonts.rougeScript(
+                      textStyle: TextStyle(fontSize: 70)))
+              : AutoSizeText("Mood Buster",
+                  maxLines: 1,
+                  style: GoogleFonts.rougeScript(
+                      textStyle: TextStyle(fontSize: 110))),
           Text("Say yes to positivity",
               style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 30))),
           SizedBox(height: 40),
           InkWell(
-            onTap: () {},
+            onTap: () async {
+              var query =
+                  await FirebaseFirestore.instance.collection('users').get();
+              print(query.docs.first.data());
+            },
             child: Container(
                 width: 200,
                 height: 60,

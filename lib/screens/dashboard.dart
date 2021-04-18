@@ -40,7 +40,7 @@ class DashBoardState extends State<DashBoard> {
         },
       },
       {
-        'name': 'Movies/Series',
+        'name': 'Suggestions',
         'onTap': () {
           setState(() {
             currentPage = 'suggestion';
@@ -103,15 +103,8 @@ class DashBoardState extends State<DashBoard> {
       case "articles":
         return ArticlePage();
         break;
-
-      case "suggestion":
-        return SuggestionsPage();
-        break;
       case "chat":
         return ChatForum();
-        break;
-      case "about":
-        return AboutUs();
         break;
       default:
         return Container();
