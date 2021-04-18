@@ -90,13 +90,6 @@ class DashBoardState extends State<DashBoard> {
               NavBar(
                 parent: this,
               ),
-              TextButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) => Dialog());
-                  },
-                  child: Text("Press"))
             ],
           )),
     );
