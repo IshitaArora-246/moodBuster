@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:moodbuster/screens/about_us.dart';
-import 'package:moodbuster/screens/blog_page.dart';
+import 'package:moodbuster/screens/article_page.dart';
 import 'package:moodbuster/screens/chat_forum.dart';
 import 'package:moodbuster/screens/home_page.dart';
 import 'package:moodbuster/screens/suggestions_page.dart';
@@ -32,10 +32,10 @@ class DashBoardState extends State<DashBoard> {
         },
       },
       {
-        'name': 'Blogs',
+        'name': 'Articles',
         'onTap': () {
           setState(() {
-            currentPage = 'blog';
+            currentPage = 'articles';
           });
         },
       },
@@ -100,9 +100,10 @@ class DashBoardState extends State<DashBoard> {
       case "home":
         return HomePage();
         break;
-      case "blog":
-        return BlogPage();
+      case "articles":
+        return ArticlePage();
         break;
+
       case "suggestion":
         return SuggestionsPage();
         break;

@@ -31,10 +31,10 @@ class _NavBarState extends State<NavBar> {
         },
       },
       {
-        'name': 'Blogs',
+        'name': 'Articles',
         'onTap': () {
           widget.parent.setState(() {
-            widget.parent.currentPage = 'blog';
+            widget.parent.currentPage = 'articles';
           });
         },
       },
