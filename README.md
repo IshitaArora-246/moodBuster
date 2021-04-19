@@ -1,6 +1,6 @@
 # moodbuster
 
-A new Flutter project.
+Check out this website
 
 ## Getting Started
 
