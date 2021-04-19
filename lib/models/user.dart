@@ -1,14 +1,22 @@
-import 'package:meta/meta.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-@immutable
 class User1 {
-  const User1({
-    @required this.uid,
-    this.email,
-    this.displayName,
-  });
+  static const ID = "id";
+  static const NAME = "name";
+  static const PHOTO = "email";
 
-  final String uid;
-  final String email;
-  final String displayName;
+  String _id;
+  String _name;
+  String _photo;
+
+//  getters
+  String get name => _name;
+  String get photo => _photo;
+  String get id => _id;
+
+  User1.fromSnapshot(DocumentSnapshot snapshot) {
+    _name = snapshot.data()[NAME];
+    _photo = snapshot.data()[PHOTO];
+    _id = snapshot.data()[ID];
+  }
 }
