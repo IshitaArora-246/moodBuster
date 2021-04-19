@@ -1,9 +1,12 @@
 import 'dart:ui';
-
+import 'package:nb_utils/nb_utils.dart';
+import 'package:moodbuster/providers/app.dart';
+import 'package:moodbuster/providers/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:moodbuster/screens/dashboard.dart';
 import 'package:moodbuster/widgets/nav_item.dart';
+import 'package:provider/provider.dart';
 
 class NavBar extends StatefulWidget {
   NavBar({
@@ -33,10 +36,10 @@ class _NavBarState extends State<NavBar> {
         },
       },
       {
-        'name': 'Articles',
+        'name': 'Blogs',
         'onTap': () {
           widget.parent.setState(() {
-            widget.parent.currentPage = 'articles';
+            widget.parent.currentPage = 'blogs';
           });
         },
       },
@@ -53,9 +56,11 @@ class _NavBarState extends State<NavBar> {
 
   @override
   Widget build(BuildContext context) {
+    final AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    final AppProvider appProvider = Provider.of<AppProvider>(context);
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    print(screenWidth);
+
     return Container(
         height: screenHeight * 0.1,
         width: screenWidth,
@@ -267,7 +272,25 @@ class _NavBarState extends State<NavBar> {
                     ),
                   ]),
                   InkWell(
-                    onTap: () {},
+                    onTap: () async {
+                      AppProvider().changeLoading();
+                      Map result = await AuthProvider.init().signInWithGoogle();
+                      bool success = result['success'];
+                      String message = result['message'];
+                      print(
+                          "=======================MEASSAGE: message============================");
+
+                      if (!success) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(SnackBar(content: Text(message)));
+                        print("not successful");
+                        AppProvider().changeLoading();
+                      } else {
+                        AppProvider().changeLoading();
+                        print("successful");
+                        DashBoard().launch(context);
+                      }
+                    },
                     child: Container(
                       width: screenWidth,
                       height: 50,
