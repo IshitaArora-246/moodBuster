@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moodbuster/constants/textStyle.dart';
-import 'package:moodbuster/screens/home_page.dart';
+import 'package:moodbuster/screens/dashboard.dart';
 
 class BlogScreen extends StatelessWidget {
   const BlogScreen({Key key}) : super(key: key);
@@ -8,14 +8,13 @@ class BlogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    // final screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: Container(
         margin: EdgeInsets.symmetric(
-          vertical: screenHeight * 0.05,
-        ),
-        padding: EdgeInsets.symmetric(horizontal: screenHeight * 0.15),
+            vertical: screenHeight * 0.05, horizontal: screenWidth * 0.17),
+        // padding: EdgeInsets.symmetric(horizontal: screenHeight * 0.15),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -29,7 +28,7 @@ class BlogScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomePage()));
+                                builder: (context) => DashBoard()));
                       }),
                   Text("Back to Home Page"),
                   Spacer(),
@@ -42,7 +41,7 @@ class BlogScreen extends StatelessWidget {
               ),
               Text("How to cope with anger issues?",
                   maxLines: 3,
-                  textAlign: TextAlign.justify,
+                  textAlign: TextAlign.left,
                   style: headingStyle.copyWith(fontSize: 50)),
               Text(
                 "-BY SARAH STEELE",
@@ -63,7 +62,7 @@ class BlogScreen extends StatelessWidget {
               Text(
                 "Reference: https://www.helpguide.org/articles/relationships-communication/anger-management.htm",
                 style: TextStyle(
-                    letterSpacing: 2, fontSize: 14, color: Colors.grey[700]),
+                    letterSpacing: 2, fontSize: 14, color: Colors.grey[600]),
               ),
             ],
           ),

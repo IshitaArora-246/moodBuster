@@ -8,7 +8,7 @@ class SuggestionsPage extends StatelessWidget {
     return Scaffold(
       body: Container(
           child: Stack(
-        children: [Center(child: Text("This is suggestion page"))],
+        children: [Center(child: Text("This is suggestion page !!"))],
       )),
     );
   }

@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:moodbuster/screens/login_screen.dart';
+import 'package:moodbuster/utils/authentication.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({
@@ -38,14 +38,8 @@ class HomePage extends StatelessWidget {
                 style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 30))),
             SizedBox(height: 40),
             InkWell(
-              onTap: () async {
-                // var query =
-                //     await FirebaseFirestore.instance.collection('users').get();
-                // print(query.docs.first.data());
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => AuthenticationScreen()));
+              onTap: () {
+                context.read<FirebaseAuthService>().signInWithGoogle();
               },
               child: Container(
                   width: 200,

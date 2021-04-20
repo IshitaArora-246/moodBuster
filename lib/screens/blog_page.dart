@@ -81,9 +81,9 @@ class _BlogPageState extends State<BlogPage> {
             width: 300,
             color: Colors.white.withOpacity(0.7),
             child: Center(
-              child: Text("How to Help a Loved One with Bipolar Disorder?",
+              child: Text("How to cope with Anger issues?",
                   maxLines: 3,
-                  textAlign: TextAlign.justify,
+                  textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 18)),
             ),

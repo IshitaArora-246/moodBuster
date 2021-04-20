@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:moodbuster/screens/about_us.dart';
 import 'package:moodbuster/screens/blog_page.dart';
 import 'package:moodbuster/screens/chat_forum.dart';
 import 'package:moodbuster/screens/home_page.dart';
+import 'package:moodbuster/screens/suggestions_page.dart';
 import 'package:moodbuster/widgets/my_drawer.dart';
 import 'package:moodbuster/widgets/navbar.dart';
 
@@ -103,6 +105,12 @@ class DashBoardState extends State<DashBoard> {
         break;
       case "chat":
         return ChatForum();
+        break;
+      case "suggestion":
+        return SuggestionsPage();
+        break;
+      case "about":
+        return AboutUs();
         break;
       default:
         return Container();
