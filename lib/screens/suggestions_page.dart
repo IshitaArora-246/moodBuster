@@ -6,10 +6,11 @@ class SuggestionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          child: Stack(
-        children: [Center(child: Text("This is suggestion page !!"))],
-      )),
+      body: Center(
+        child: Container(
+          child: Text("This is suggestions page"),
+        ),
+      ),
     );
   }
 }
