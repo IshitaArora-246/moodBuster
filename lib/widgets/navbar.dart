@@ -207,10 +207,17 @@ class _NavBarState extends State<NavBar> {
                 TextFormField(
                   style: TextStyle(fontWeight: FontWeight.w500),
                   decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 1),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0XFFA6DAE8), width: 2),
+                    ),
                     labelText: "Email Address",
                     labelStyle: TextStyle(
                       fontWeight: FontWeight.w500,
-                      color: Colors.grey.shade500,
+                      color: Colors.grey.shade700,
                     ),
                     prefixIcon: Icon(
                       Icons.mail_outline_rounded,
@@ -223,10 +230,17 @@ class _NavBarState extends State<NavBar> {
                   style: TextStyle(fontWeight: FontWeight.w500),
                   obscureText: true,
                   decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 1),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0XFFA6DAE8), width: 2),
+                    ),
                     labelText: "Password",
                     labelStyle: TextStyle(
                       fontWeight: FontWeight.w500,
-                      color: Colors.grey.shade500,
+                      color: Colors.grey.shade700,
                     ),
                     prefixIcon: Icon(
                       Icons.lock_outline_rounded,
@@ -243,20 +257,14 @@ class _NavBarState extends State<NavBar> {
                       gradient: LinearGradient(
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
-                          colors: [
-                            Colors.green[900],
-                            Colors.green[700],
-                            Colors.green,
-                            Colors.green[700],
-                            Colors.green[900]
-                          ])),
+                          colors: [Color(0XFFA6DAE8), Color(0XFFB9B2DC)])),
                   child: TextButton(
                     onPressed: () {},
                     child: Text("Login",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
-                            color: Colors.white)),
+                            color: Colors.black87)),
                   ),
                 ),
                 Row(children: <Widget>[
@@ -289,14 +297,9 @@ class _NavBarState extends State<NavBar> {
                     width: screenWidth,
                     height: 50,
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: [
-                              Color(0XFF000000),
-                              Color(0XAA434343),
-                              Color(0XFF000000)
-                            ]),
+                        color: Colors.transparent,
+                        border: Border.all(width: 1, color: Colors.grey),
+                        
                         borderRadius: BorderRadius.circular(50)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

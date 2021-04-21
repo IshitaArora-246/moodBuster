@@ -37,10 +37,7 @@ class SuggestionsPage extends StatelessWidget {
                       "reference": refController.text,
                       "date": DateTime.now().millisecondsSinceEpoch,
                     };
-                    FirebaseFirestore.instance
-                        .collection("blogs")
-                        .add(blogData);
-                    print("Successfully added to Database");
+                    
                   },
                   child: Text("Submit"))
             ],

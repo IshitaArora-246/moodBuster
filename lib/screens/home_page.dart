@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/utils/authentication.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +40,7 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 40),
             InkWell(
               onTap: () {
-                context.read<FirebaseAuthService>().signInWithGoogle();
+                DatabaseService().temporory();
               },
               child: Container(
                   width: 200,

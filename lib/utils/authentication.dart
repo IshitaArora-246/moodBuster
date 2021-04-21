@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:moodbuster/models/UserModel.dart';
@@ -16,9 +15,8 @@ class FirebaseAuthService {
       return null;
     }
     return UserModel(
+      doc: null,
       uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
     );
   }
 

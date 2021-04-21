@@ -3,12 +3,14 @@ import 'package:meta/meta.dart';
 @immutable
 class UserModel {
   const UserModel({
-    @required this.uid,
-    this.email,
-    this.displayName,
+    this.doc,
+    this.uid,
   });
 
   final String uid;
-  final String email;
-  final String displayName;
+  final Map<String, dynamic> doc;
+
+  factory UserModel.empty() => UserModel();
+
+  bool get isEmpty => (doc == null);
 }
