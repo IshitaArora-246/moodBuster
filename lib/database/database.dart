@@ -24,7 +24,7 @@ class DatabaseService {
         yield* ref.snapshots().map(
           (snap) {
             if (snap.exists) {
-              return UserModel(doc: snap.data(), uid: snap.id);
+              return UserModel(uid: snap.id);
             } else {
               return UserModel.empty();
             }
@@ -38,6 +38,8 @@ class DatabaseService {
 
   Future<bool> isUserDocExists() async {
     User user = auth.currentUser;
+    QuerySnapshot querySnapshot = await userCollection.get();
+
     DocumentSnapshot userDoc = await userCollection.doc(user.uid).get();
     print(user.uid);
     if (userDoc.exists) {
@@ -46,24 +48,31 @@ class DatabaseService {
     return false;
   }
 
-  Future<void> createNewDocument({@required String name}) async {
-    User user = auth.currentUser;
-    await userCollection.doc(user.uid).set({
-      'name': name,
-      'createdAt': DateFormat.yMMMd().format(DateTime.now()),
-      'phoneNumber': user.phoneNumber ?? "",
-    });
-  }
+  // Future<void> createNewDocument({@required String name}) async {
+  //   User user = auth.currentUser;
+  //   await userCollection.doc(user.uid).set({
+  //     'name': name,
+  //     'createdAt': DateFormat.yMMMd().format(DateTime.now()),
+  //     'phoneNumber': user.phoneNumber ?? "",
+  //   });
+  // }
 
   Future<void> upoadBlog({@required Map blogData}) async {
     blogCollection.add(blogData);
-    print("Successfully added to Database");
+    print("Blog successfully added to Database");
+  }
+
+  Future<void> saveUserData({@required Map userData}) async {
+    userCollection.add(userData);
+    print("User Successfully added to Database");
+  }
+
+  Stream<QuerySnapshot> fetchBlog() {
+    return FirebaseFirestore.instance.collection("blogs").snapshots();
   }
 
   temporory() async {
     DocumentSnapshot doc = await userCollection.doc('DOCID1').get();
     print(doc.data()['name']);
   }
-
-
 }

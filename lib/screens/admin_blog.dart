@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:moodbuster/database/database.dart';
 
 class SuggestionsPage extends StatelessWidget {
   const SuggestionsPage({Key key}) : super(key: key);
@@ -37,7 +37,7 @@ class SuggestionsPage extends StatelessWidget {
                       "reference": refController.text,
                       "date": DateTime.now().millisecondsSinceEpoch,
                     };
-                    
+                    DatabaseService().upoadBlog(blogData: blogData);
                   },
                   child: Text("Submit"))
             ],

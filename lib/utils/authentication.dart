@@ -15,7 +15,6 @@ class FirebaseAuthService {
       return null;
     }
     return UserModel(
-      doc: null,
       uid: user.uid,
     );
   }
