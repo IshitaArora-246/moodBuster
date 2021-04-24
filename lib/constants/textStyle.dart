@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+final Color tan = Color(0XFFC19A6B);
+
 final headingStyle = TextStyle(
   fontSize: 24,
   fontWeight: FontWeight.bold,
@@ -11,4 +13,3 @@ final paraStyle = TextStyle(
   fontWeight: FontWeight.normal,
   color: Colors.grey[900],
 );
-

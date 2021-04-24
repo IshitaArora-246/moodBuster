@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/models/UserModel.dart';
 import 'package:moodbuster/utils/authentication.dart';
 import 'package:moodbuster/widgets/dialog_box.dart';
@@ -21,7 +22,7 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   List navItems;
-  Color tan = Color(0XFFC19A6B);
+  
 
   @override
   void initState() {
