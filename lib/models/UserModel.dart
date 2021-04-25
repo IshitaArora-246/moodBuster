@@ -2,12 +2,13 @@ import 'package:meta/meta.dart';
 
 @immutable
 class UserModel {
-  const UserModel({
+  UserModel({
+    this.doc,
     this.uid,
   });
 
   final String uid;
-  static Map<String, dynamic> doc;
+  Map<String, dynamic> doc;
 
   factory UserModel.empty() => UserModel();
 
