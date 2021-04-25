@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/models/UserModel.dart';
 import 'package:moodbuster/screens/dashboard.dart';
 import 'package:moodbuster/utils/authentication.dart';
@@ -30,6 +31,9 @@ class MyApp extends StatelessWidget {
             print("==========Not Signed in===========");
             return DashBoard();
           } else {
+            DatabaseService().getUserDoc().then((value) {
+              // Provider.of<UserModel>(context).doc=value;
+            });
             print("===========Signed in===========");
             return DashBoard();
           }
