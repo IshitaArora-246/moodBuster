@@ -1,7 +1,7 @@
 import 'dart:ui';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:moodbuster/constants/textStyle.dart';
+import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/screens/blog_screen.dart';
 
 class BlogPage extends StatefulWidget {
@@ -15,65 +15,59 @@ class _BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0XFFfff2e3),
         body: Container(
           margin: EdgeInsets.only(top: 100, right: 30, left: 30, bottom: 10),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("OUR BLOGS",
-                    style: headingStyle.copyWith(
-                        decoration: TextDecoration.underline,
-                        fontSize: 40,
-                        wordSpacing: 7)),
-                SizedBox(height: 20),
-                blogRow(),
-                SizedBox(height: 20),
-                blogRow(),
-                SizedBox(height: 20),
-                blogRow(),
-                SizedBox(height: 20),
-                blogRow(),
-                SizedBox(height: 20),
-                blogRow(),
-                SizedBox(height: 20),
-                blogRow(),
-                SizedBox(height: 20),
-                blogRow(),
-                SizedBox(height: 20),
-                blogRow()
-              ],
-            ),
-          ),
+          child: StreamBuilder<Object>(
+              stream: DatabaseService().fetchBlog(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  QuerySnapshot querySnapshot = snapshot.data;
+                  List<QueryDocumentSnapshot> blogs = querySnapshot.docs;
+                  return GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 2,
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20),
+                      itemCount: blogs.length,
+                      itemBuilder: (context, index) {
+                        return blogCard(
+                            blogs[index].data()['title'],
+                            blogs[index].data()['pictureUrl'],
+                            blogs[index].data());
+                      });
+                } else {
+                  return Center(child: Text("Loading..."));
+                }
+              }),
         ));
   }
 
-  Widget blogRow() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [blogCard(), blogCard()],
-    );
-  }
-
-  Widget blogCard() {
-    return Flexible(
-        child: Stack(
+  Widget blogCard(String title, String imageUrl, Map blogData) {
+    return Stack(
       alignment: Alignment.center,
       children: [
         Container(
           height: 300,
           width: 500,
-          child: Image.network(
-            "https://i0.wp.com/post.psychcentral.com/wp-content/uploads/sites/4/2021/01/Female_Window_732x549-thumbnail-732x549.jpg?w=420",
-            fit: BoxFit.cover,
-            filterQuality: FilterQuality.medium,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              "$imageUrl",
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.medium,
+            ),
           ),
         ),
         InkWell(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => BlogScreen()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => BlogScreen(
+                          blogData: blogData,
+                        )));
           },
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 30),
@@ -81,7 +75,7 @@ class _BlogPageState extends State<BlogPage> {
             width: 300,
             color: Colors.white.withOpacity(0.7),
             child: Center(
-              child: Text("How to cope with Anger issues?",
+              child: Text("$title",
                   maxLines: 3,
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
@@ -90,6 +84,6 @@ class _BlogPageState extends State<BlogPage> {
           ),
         ),
       ],
-    ));
+    );
   }
 }

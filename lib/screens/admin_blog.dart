@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:moodbuster/database/database.dart';
 
-class SuggestionsPage extends StatelessWidget {
-  const SuggestionsPage({Key key}) : super(key: key);
+class UploadBlogPage extends StatelessWidget {
+  const UploadBlogPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,19 +12,20 @@ class SuggestionsPage extends StatelessWidget {
     TextEditingController photoController = TextEditingController();
 
     return Scaffold(
+      backgroundColor: Color(0XFFfff2e3),
       body: Container(
           margin: EdgeInsets.all(100),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Title\n"),
-              buildTextbox(2, titleController),
+              buildTextbox(4, titleController),
               SizedBox(height: 10),
               Text("PictureUrl\n"),
               buildTextbox(1, photoController),
               SizedBox(height: 10),
               Text("Content\n"),
-              buildTextbox(50, contentController),
+              buildTextbox(400, contentController),
               SizedBox(height: 10),
               Text("Reference\n"),
               buildTextbox(2, refController),
