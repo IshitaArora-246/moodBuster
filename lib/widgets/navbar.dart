@@ -22,7 +22,6 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   List navItems;
-  
 
   @override
   void initState() {
@@ -53,7 +52,7 @@ class _NavBarState extends State<NavBar> {
         },
       },
       {
-        'name': 'Suggesions',
+        'name': 'Expert Panel',
         'onTap': () {
           widget.parent.setState(() {
             widget.parent.currentPage = 'suggestion';

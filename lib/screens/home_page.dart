@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/utils/authentication.dart';
+import 'package:moodbuster/widgets/dialog_box.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -40,7 +41,9 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 40),
             InkWell(
               onTap: () {
-                DatabaseService().temporory();
+                print("Login Button tapped!");
+
+                _showMenuDialog(context);
               },
               child: Container(
                   width: 200,
@@ -64,5 +67,10 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _showMenuDialog(BuildContext context) {
+    Widget dialog = ShowMenuDialogBox();
+    showDialog(context: context, builder: (BuildContext context) => dialog);
   }
 }

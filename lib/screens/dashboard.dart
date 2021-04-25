@@ -107,7 +107,7 @@ class DashBoardState extends State<DashBoard> {
         return ChatForum();
         break;
       case "suggestion":
-        return SuggestionsPage();
+        return FeedbackPage();
         break;
       case "about":
         return AboutUs();
