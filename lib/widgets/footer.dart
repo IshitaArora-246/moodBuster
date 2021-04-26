@@ -11,7 +11,7 @@ class Footer extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Container(
-        height: screenHeight * 0.3,
+        height: screenHeight * 0.35,
         width: screenWidth,
         color: Color(0XFF353535),
         child: Container(
@@ -26,7 +26,7 @@ class Footer extends StatelessWidget {
                       width: screenWidth * 0.7,
                       child: Row(children: [
                         Container(
-                            width: screenWidth * 0.35,
+                            width: screenWidth * 0.25,
                             padding: EdgeInsets.all(20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +37,7 @@ class Footer extends StatelessWidget {
                               ],
                             )),
                         Container(
-                            width: screenWidth * 0.35,
+                            width: screenWidth * 0.25,
                             padding: EdgeInsets.all(20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,28 +61,40 @@ class Footer extends StatelessWidget {
                           Row(
                             children: [
                               Spacer(),
-                              IconButton(
-                                  icon: FaIcon(FontAwesomeIcons.facebookF),
-                                  color: Colors.indigo,
-                                  onPressed: () {}),
-                              IconButton(
-                                  icon: FaIcon(FontAwesomeIcons.instagram),
-                                  color: Colors.pink,
-                                  onPressed: () {}),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: IconButton(
+                                    icon: FaIcon(FontAwesomeIcons.facebookF),
+                                    color: Colors.indigo,
+                                    onPressed: () {}),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: IconButton(
+                                    icon: FaIcon(FontAwesomeIcons.instagram),
+                                    color: Colors.pink,
+                                    onPressed: () {}),
+                              ),
                               Spacer(),
                             ],
                           ),
                           Row(
                             children: [
                               Spacer(),
-                              IconButton(
-                                  icon: FaIcon(FontAwesomeIcons.pinterestP),
-                                  color: Colors.red,
-                                  onPressed: () {}),
-                              IconButton(
-                                  icon: FaIcon(FontAwesomeIcons.twitter),
-                                  color: Colors.blue,
-                                  onPressed: () {}),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: IconButton(
+                                    icon: FaIcon(FontAwesomeIcons.pinterestP),
+                                    color: Colors.red,
+                                    onPressed: () {}),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: IconButton(
+                                    icon: FaIcon(FontAwesomeIcons.twitter),
+                                    color: Colors.blue,
+                                    onPressed: () {}),
+                              ),
                               Spacer(),
                             ],
                           )
@@ -94,7 +106,7 @@ class Footer extends StatelessWidget {
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text("2021 \u00a9 Mood Buster",
+                  child: Text("2021 \u00a9 All rights reserved || Mood Buster",
                       style: TextStyle(color: Colors.white)),
                 ),
                 Spacer()

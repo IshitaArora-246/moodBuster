@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 
-
 class LandingChatPage extends StatelessWidget {
   const LandingChatPage({
     Key key,
@@ -24,30 +23,23 @@ class LandingChatPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Group Chat",
+                      "Build Community",
                       style: headingStyle.copyWith(
                           fontSize: 40, fontWeight: FontWeight.w800),
-                      maxLines: 4,
+                      maxLines: 1,
                     ),
                     SizedBox(height: 35),
-                    Expanded(
-                      child: Flexible(
-                        child: Text(
-                          "Group chats allow you to connect with other people like you and build a community. Group chats explore a range of helpful topics.",
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          maxLines: 7,
-                        ),
+                    Text(
+                      "Group chats allow you to connect with other people like you and build a community. Group chats explore a range of helpful topics.",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
+                      maxLines: 4,
                     ),
                     SizedBox(height: 40),
                     InkWell(
-                      onTap: () {
-                        print("Group chat");
-                      },
+                      onTap: () {},
                       child: Container(
                           width: 200,
                           height: 60,

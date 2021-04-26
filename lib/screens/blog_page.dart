@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/screens/blog_screen.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class BlogPage extends StatefulWidget {
   BlogPage({Key key}) : super(key: key);
@@ -18,27 +19,49 @@ class _BlogPageState extends State<BlogPage> {
     return Scaffold(
         backgroundColor: lightskin,
         body: Container(
-          margin: EdgeInsets.only(top: 100, right: 30, left: 30, bottom: 10),
-          child: StreamBuilder<Object>(
-              stream: DatabaseService().fetchBlog(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  QuerySnapshot querySnapshot = snapshot.data;
-                  List<QueryDocumentSnapshot> blogs = querySnapshot.docs;
-                  return GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          childAspectRatio: 2,
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 20),
-                      itemCount: blogs.length,
-                      itemBuilder: (context, index) {
-                        return BlogCard(context: context, title: blogs[index].data()['title'], imageUrl: blogs[index].data()['pictureUrl'], blogData: blogs[index].data());
-                      });
-                } else {
-                  return Center(child: Text("Loading..."));
-                }
-              }),
+          margin: EdgeInsets.only(top: 100, right: 30, left: 30),
+          child: Column(
+            children: [
+              Text(
+                "Our Blogs\n",
+                style: headingStyle.copyWith(fontSize: 30),
+              ),
+              Expanded(
+                child: StreamBuilder<Object>(
+                    stream: DatabaseService().fetchBlog(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        QuerySnapshot querySnapshot = snapshot.data;
+                        List<QueryDocumentSnapshot> blogs = querySnapshot.docs;
+                        return GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    childAspectRatio: 2,
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 20,
+                                    mainAxisSpacing: 20),
+                            itemCount: blogs.length,
+                            itemBuilder: (context, index) {
+                              return BlogCard(
+                                  context: context,
+                                  title: blogs[index].data()['title'],
+                                  imageUrl: blogs[index].data()['pictureUrl'],
+                                  blogData: blogs[index].data());
+                            });
+                      } else {
+                        return Container(
+                          child: Center(
+                            child: SpinKitCircle(
+                              color: Colors.brown,
+                              size: 50.0,
+                            ),
+                          ),
+                        );
+                      }
+                    }),
+              ),
+            ],
+          ),
         ));
   }
 }

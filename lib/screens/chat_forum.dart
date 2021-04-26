@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
@@ -42,51 +43,51 @@ class _ChatForumState extends State<ChatForum> {
                 Column(
                   children: [
                     Expanded(
-                      child: isValidUser
-                          ? StreamBuilder<Object>(
-                              stream: DatabaseService().getChats(),
-                              builder: (context, snapshot) {
-                                if (snapshot.hasData) {
-                                  QuerySnapshot querySnapshot = snapshot.data;
-                                  List<QueryDocumentSnapshot> chats =
-                                      querySnapshot.docs;
-                                  return ListView.builder(
-                                      reverse: true,
-                                      itemCount: chats.length,
-                                      itemBuilder: (context, index) {
-                                        bool isSenderMessage =
-                                            chats[index]["uid"] == userUid;
-                                        Map<String, dynamic> chat =
-                                            chats[index].data();
-                                        return SenderMessage(
-                                            isSenderMessage: isSenderMessage,
-                                            chat: chat);
-                                      });
-                                } else {
-                                  return Container(
-                                      child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Image.asset("assets/images/chat.png"),
-                                      Text(
-                                          "Build community, Seek help, Build confidence",
-                                          style: headingStyle.copyWith(
-                                              fontSize: 40))
-                                    ],
-                                  ));
-                                }
-                              })
-                          : Container(
-                              child: Column(
-                              children: [
-                                Image.asset("assets/images/chat.png"),
-                                Text("Login to access chat feature!!",
-                                    style: headingStyle.copyWith(fontSize: 40))
-                              ],
-                            )),
-                    ),
+                        child: isValidUser
+                            ? StreamBuilder<Object>(
+                                stream: DatabaseService().getChats(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    QuerySnapshot querySnapshot = snapshot.data;
+                                    List<QueryDocumentSnapshot> chats =
+                                        querySnapshot.docs;
+                                    return ListView.builder(
+                                        reverse: true,
+                                        itemCount: chats.length,
+                                        itemBuilder: (context, index) {
+                                          bool isSenderMessage =
+                                              chats[index]["uid"] == userUid;
+                                          Map<String, dynamic> chat =
+                                              chats[index].data();
+                                          return SenderMessage(
+                                              isSenderMessage: isSenderMessage,
+                                              chat: chat);
+                                        });
+                                  } else {
+                                    return Container(
+                                        child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Image.asset("assets/images/chat.png"),
+                                        Text(
+                                            "Build community, Seek help, Build confidence",
+                                            style: headingStyle.copyWith(
+                                                fontSize: 40))
+                                      ],
+                                    ));
+                                  }
+                                })
+                            : Container(
+                                child: Center(
+                                  child: SpinKitCircle(
+                                    color: Colors.brown,
+                                    size: 50.0,
+                                  ),
+                                ),
+                              )),
                     SizedBox(height: 10),
                     MessageField()
                   ],
