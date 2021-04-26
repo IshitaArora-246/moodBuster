@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 
 class UploadBlogPage extends StatelessWidget {
@@ -12,7 +13,7 @@ class UploadBlogPage extends StatelessWidget {
     TextEditingController photoController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Color(0XFFfff2e3),
+      backgroundColor: lightskin,
       body: Container(
           margin: EdgeInsets.all(100),
           child: Column(

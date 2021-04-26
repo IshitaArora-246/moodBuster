@@ -10,7 +10,7 @@ class AboutUs extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Color(0XFFfff2e3),
+      backgroundColor: lightskin,
       body: Container(
           padding: EdgeInsets.only(top: screenHeight * 0.1),
           margin: EdgeInsets.symmetric(

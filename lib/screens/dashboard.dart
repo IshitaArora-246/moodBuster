@@ -4,7 +4,7 @@ import 'package:moodbuster/screens/about_us.dart';
 import 'package:moodbuster/screens/blog_page.dart';
 import 'package:moodbuster/screens/chat_forum.dart';
 import 'package:moodbuster/screens/home_page.dart';
-import 'package:moodbuster/screens/suggestions_page.dart';
+import 'package:moodbuster/screens/talk_to_expert_page.dart';
 import 'package:moodbuster/widgets/my_drawer.dart';
 import 'package:moodbuster/widgets/navbar.dart';
 
@@ -32,10 +32,10 @@ class DashBoardState extends State<DashBoard> {
         },
       },
       {
-        'name': 'Articles',
+        'name': 'Blogs',
         'onTap': () {
           setState(() {
-            currentPage = 'articles';
+            currentPage = 'blogs';
           });
         },
       },
@@ -107,7 +107,7 @@ class DashBoardState extends State<DashBoard> {
         return ChatForum();
         break;
       case "suggestion":
-        return FeedbackPage();
+        return TalkToExpertPage();
         break;
       case "about":
         return AboutUs();

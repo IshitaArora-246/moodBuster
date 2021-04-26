@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 
-class FeedbackPage extends StatefulWidget {
-  const FeedbackPage({Key key}) : super(key: key);
+class TalkToExpertPage extends StatefulWidget {
+  const TalkToExpertPage({Key key}) : super(key: key);
 
   @override
-  _FeedbackPageState createState() => _FeedbackPageState();
+  _TalkToExpertPageState createState() => _TalkToExpertPageState();
 }
 
-class _FeedbackPageState extends State<FeedbackPage> {
+class _TalkToExpertPageState extends State<TalkToExpertPage> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -20,7 +20,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
     TextEditingController emailController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Color(0XFFfff2e3),
+      backgroundColor: lightskin,
       body: Container(
           margin: EdgeInsets.only(
               top: screenHeight * 0.12,
@@ -34,7 +34,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "GET IN TOUCH",
+                    "Get in touch with experts",
                     style: headingStyle.copyWith(
                         fontSize: 45, wordSpacing: 2, letterSpacing: 1.5),
                   ),

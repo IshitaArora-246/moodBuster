@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/screens/blog_screen.dart';
 
@@ -15,7 +16,7 @@ class _BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0XFFfff2e3),
+        backgroundColor: lightskin,
         body: Container(
           margin: EdgeInsets.only(top: 100, right: 30, left: 30, bottom: 10),
           child: StreamBuilder<Object>(
@@ -32,10 +33,7 @@ class _BlogPageState extends State<BlogPage> {
                           mainAxisSpacing: 20),
                       itemCount: blogs.length,
                       itemBuilder: (context, index) {
-                        return blogCard(
-                            blogs[index].data()['title'],
-                            blogs[index].data()['pictureUrl'],
-                            blogs[index].data());
+                        return BlogCard(context: context, title: blogs[index].data()['title'], imageUrl: blogs[index].data()['pictureUrl'], blogData: blogs[index].data());
                       });
                 } else {
                   return Center(child: Text("Loading..."));
@@ -43,8 +41,24 @@ class _BlogPageState extends State<BlogPage> {
               }),
         ));
   }
+}
 
-  Widget blogCard(String title, String imageUrl, Map blogData) {
+class BlogCard extends StatelessWidget {
+  const BlogCard({
+    Key key,
+    @required this.context,
+    @required this.title,
+    @required this.imageUrl,
+    @required this.blogData,
+  }) : super(key: key);
+
+  final BuildContext context;
+  final String title;
+  final String imageUrl;
+  final Map blogData;
+
+  @override
+  Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [

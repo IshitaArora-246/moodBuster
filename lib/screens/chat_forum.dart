@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
@@ -23,7 +22,7 @@ class _ChatForumState extends State<ChatForum> {
     bool isValidUser = userUid != null;
 
     return Scaffold(
-        backgroundColor: Color(0XFFfff2e3),
+        backgroundColor: lightskin,
         body: Container(
             // decoration: BoxDecoration(
             //   image: new DecorationImage(

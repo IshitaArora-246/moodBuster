@@ -12,7 +12,7 @@ class BlogScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Color(0XFFfff2e3),
+      backgroundColor: lightskin,
       body: Container(
         margin: EdgeInsets.symmetric(
             vertical: screenHeight * 0.05, horizontal: screenWidth * 0.17),

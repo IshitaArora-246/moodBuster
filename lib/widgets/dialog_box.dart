@@ -58,9 +58,10 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                           : Expanded(
                               child: Container(
                                 height: screenHeight * 0.6,
+                                padding: EdgeInsets.all(20),
                                 child: Image.asset(
                                   "assets/images/dialog.png",
-                                  fit: BoxFit.cover,
+                                  fit: BoxFit.contain,
                                 ),
                               ),
                             ),

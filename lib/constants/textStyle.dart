@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 final Color tan = Color(0XFFC19A6B);
+final Color lightskin = Color(0XFFfff2e3);
 
 final headingStyle = TextStyle(
   fontSize: 24,
