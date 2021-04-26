@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/widgets/dialog_box.dart';
 
 class LandingPage extends StatelessWidget {
@@ -25,14 +26,12 @@ class LandingPage extends StatelessWidget {
           screenWidth < 500
               ? AutoSizeText("Mood Buster",
                   maxLines: 1,
-                  style: GoogleFonts.rougeScript(
-                      textStyle: TextStyle(fontSize: 70)))
+                  style: TextStyle(fontSize: 70, fontFamily: rouge))
               : AutoSizeText("Mood Buster",
                   maxLines: 1,
-                  style: GoogleFonts.rougeScript(
-                      textStyle: TextStyle(fontSize: 110))),
+                  style: TextStyle(fontFamily: rouge, fontSize: 110)),
           Text("Say yes to positivity",
-              style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 30))),
+              style: TextStyle(fontSize: 30, fontFamily: paraFont)),
           SizedBox(height: 40),
           InkWell(
             onTap: () {
@@ -54,8 +53,10 @@ class LandingPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)),
                 child: Center(
                   child: Text("Get Started",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      )),
                 )),
           )
         ],

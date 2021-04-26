@@ -42,7 +42,6 @@ class LandingExpertPage extends StatelessWidget {
                       textAlign: TextAlign.justify,
                       style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
                       ),
                       maxLines: 20,
                     ),

@@ -35,7 +35,6 @@ class LandingBlogPage extends StatelessWidget {
                 "There are many ways to access information and support about your mental health and wellbeing. Learn about mental health and receive information by reading our blogs",
                 style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
                 maxLines: 4,

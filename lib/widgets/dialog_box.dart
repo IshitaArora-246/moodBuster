@@ -160,15 +160,10 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                                       width: screenWidth,
                                       height: 50,
                                       decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(500),
-                                          gradient: LinearGradient(
-                                              begin: Alignment.centerLeft,
-                                              end: Alignment.centerRight,
-                                              colors: [
-                                                Color(0XFFA6DAE8),
-                                                Color(0XFFB9B2DC)
-                                              ])),
+                                        borderRadius:
+                                            BorderRadius.circular(500),
+                                        color: Color(0XFFA27445),
+                                      ),
                                       child: TextButton(
                                         onPressed: () {
                                           pageController.animateToPage(1,
@@ -180,7 +175,7 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                                             style: TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500,
-                                                color: Colors.black87)),
+                                                color: Colors.white)),
                                       ),
                                     ),
                                     Row(children: <Widget>[
@@ -282,7 +277,7 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                                               child: Text(
                                                   "Let's get bit familiar :)",
                                                   style: headingStyle)),
-                                          SizedBox(height: 40),
+                                          SizedBox(height: 20),
                                           TextFormField(
                                             validator: (value) {
                                               if (value.isEmpty ||

@@ -16,7 +16,6 @@ class BlogScreen extends StatelessWidget {
       body: Container(
         margin: EdgeInsets.symmetric(
             vertical: screenHeight * 0.05, horizontal: screenWidth * 0.17),
-        // padding: EdgeInsets.symmetric(horizontal: screenHeight * 0.15),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -48,9 +47,11 @@ class BlogScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Image.network(
-                blogData['pictureUrl'],
-                width: screenWidth * 0.8,
+              Center(
+                child: Image.network(
+                  blogData['pictureUrl'],
+                  // width: screenWidth * 0.8,
+                ),
               ),
               SizedBox(
                 height: 20,

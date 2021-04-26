@@ -39,7 +39,6 @@ class LandingAboutPage extends StatelessWidget {
                       "Mood Buster is a growing community working towards changing the way individuals think & act about problems related to Mental Health",
                       style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
                       ),
                       maxLines: 4,
                     ),

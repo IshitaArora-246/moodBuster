@@ -22,9 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textTheme: GoogleFonts.latoTextTheme(),
-      ),
+      
       home: Consumer<UserModel>(
         builder: (_, user, __) {
           if (user == null) {

@@ -33,7 +33,6 @@ class LandingChatPage extends StatelessWidget {
                       "Group chats allow you to connect with other people like you and build a community. Group chats explore a range of helpful topics.",
                       style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
                       ),
                       maxLines: 4,
                     ),
