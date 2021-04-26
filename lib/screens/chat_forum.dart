@@ -25,14 +25,6 @@ class _ChatForumState extends State<ChatForum> {
     return Scaffold(
         backgroundColor: lightskin,
         body: Container(
-            // decoration: BoxDecoration(
-            //   image: new DecorationImage(
-            //     colorFilter:
-            //         ColorFilter.mode(tan.withOpacity(0.7), BlendMode.dstATop),
-            //     image: AssetImage("assets/images/chatbg.png"),
-            //     fit: BoxFit.cover,
-            //   ),
-            // ),
             margin: EdgeInsets.only(
                 top: screenHeight * 0.12,
                 left: screenWidth * 0.17,
@@ -214,6 +206,7 @@ class _MessageFieldState extends State<MessageField> {
                 ? null
                 : () {
                     setState(() {});
+                    messageController.clear();
                     DatabaseService()
                         .sendMessage(userName, messageController.text, userUid);
                   })

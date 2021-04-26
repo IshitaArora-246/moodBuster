@@ -5,7 +5,6 @@ import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/screens/blog_page.dart';
 
-
 class LandingBlogPage extends StatelessWidget {
   const LandingBlogPage({
     Key key,
@@ -16,7 +15,6 @@ class LandingBlogPage extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Container(
-        height: screenHeight,
         width: screenWidth,
         color: lightskin,
         child: Column(

@@ -14,26 +14,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: ListView(
-        children: [
-          LandingPage(),
-          LandingBlogPage(),
-          LandingExpertPage(),
-          LandingChatPage(),
-          LandingAboutPage(),
-          Footer(),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            LandingPage(),
+            LandingBlogPage(),
+            LandingExpertPage(),
+            LandingChatPage(),
+            LandingAboutPage(),
+            SizedBox(height: 20),
+            Footer(),
+          ],
+        ),
       ),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-

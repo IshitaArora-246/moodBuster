@@ -11,7 +11,6 @@ class LandingAboutPage extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      height: screenHeight,
       width: screenWidth,
       color: lightskin,
       child: Row(

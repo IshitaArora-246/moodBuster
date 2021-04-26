@@ -23,7 +23,7 @@ class _BlogPageState extends State<BlogPage> {
           child: Column(
             children: [
               Text(
-                "Our Blogs\n",
+                "Our Blogs",
                 style: headingStyle.copyWith(fontSize: 30),
               ),
               Expanded(

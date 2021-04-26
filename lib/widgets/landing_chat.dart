@@ -8,10 +8,8 @@ class LandingChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      height: screenHeight,
       width: screenWidth,
       color: lightskin,
       child: Row(
@@ -30,7 +28,7 @@ class LandingChatPage extends StatelessWidget {
                     ),
                     SizedBox(height: 35),
                     Text(
-                      "Group chats allow you to connect with other people like you and build a community. Group chats explore a range of helpful topics.",
+                      "Group chats allow you to connect with other people like you and build a community.Group chats explore a\nrange of helpful topics.",
                       style: TextStyle(
                         fontSize: 20,
                       ),

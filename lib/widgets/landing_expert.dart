@@ -12,7 +12,6 @@ class LandingExpertPage extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      height: screenHeight,
       width: screenWidth,
       color: lightskin,
       padding: EdgeInsets.only(top: screenHeight * 0.1),
