@@ -76,7 +76,7 @@ class _NavBarState extends State<NavBar> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-        height: screenHeight * 0.1,
+        height: 60,
         width: screenWidth,
         decoration: BoxDecoration(
           gradient: LinearGradient(

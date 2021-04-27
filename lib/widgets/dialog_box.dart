@@ -283,7 +283,7 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                                           TextFormField(
                                             validator: (value) {
                                               if (value.isEmpty ||
-                                                  value.length > 6) {
+                                                  value.length < 6) {
                                                 return "Length of username should be more than 6 characters";
                                               }
                                               return null;

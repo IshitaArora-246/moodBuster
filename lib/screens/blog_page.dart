@@ -20,7 +20,7 @@ class _BlogPageState extends State<BlogPage> {
     return Scaffold(
         backgroundColor: lightskin,
         body: Container(
-          margin: EdgeInsets.only(top: 100, right: 30, left: 30),
+          margin: EdgeInsets.only(right: 30, left: 30, top: 60),
           child: Column(
             children: [
               Text(
