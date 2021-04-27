@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 
@@ -58,8 +59,8 @@ class _TalkToExpertPageState extends State<TalkToExpertPage> {
                     ],
                   ),
                   SizedBox(height: 40),
-                  InkWell(
-                    onTap: () async {
+                  HoverButton(
+                    onpressed: () async {
                       Map<String, dynamic> feedback = {
                         "name": namecontroller.text,
                         "email": emailController.text,
@@ -79,12 +80,12 @@ class _TalkToExpertPageState extends State<TalkToExpertPage> {
                     child: Container(
                         width: 200,
                         height: 60,
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                              color: tan.withOpacity(0.4),
-                              spreadRadius: 2,
-                              blurRadius: 10)
-                        ], color: tan, borderRadius: BorderRadius.circular(15)),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: tan,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(50)),
                         child: Center(
                           child: Text("Submit",
                               style: TextStyle(

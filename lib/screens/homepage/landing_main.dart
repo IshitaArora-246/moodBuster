@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/widgets/dialog_box.dart';
 
@@ -32,10 +33,9 @@ class LandingPage extends StatelessWidget {
           Text("Say yes to positivity",
               style: TextStyle(fontSize: 30, fontFamily: paraFont)),
           SizedBox(height: 40),
-          InkWell(
-            onTap: () {
+          HoverButton(
+            onpressed: () {
               print("Login Button tapped!");
-
               _showMenuDialog(context);
             },
             child: Container(

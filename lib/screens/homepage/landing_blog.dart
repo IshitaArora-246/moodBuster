@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/screens/blog_page.dart';
@@ -12,7 +13,6 @@ class LandingBlogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Container(
         width: screenWidth,
@@ -63,20 +63,19 @@ class LandingBlogPage extends StatelessWidget {
                   return SizedBox();
                 }),
             SizedBox(height: 40),
-            InkWell(
-              onTap: () {},
+            HoverButton(
+              onpressed: () {},
+              hoverColor: tan.withOpacity(0.5),
               child: Container(
                   width: 200,
                   height: 60,
                   decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey[900].withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 10)
-                      ],
-                      color: Colors.white54,
-                      borderRadius: BorderRadius.circular(15)),
+                      border: Border.all(
+                        color: tan,
+                        width: 2,
+                      ),
+                      // boxShadow: [BoxShadow(spreadRadius: 1, blurRadius: 5)],
+                      borderRadius: BorderRadius.circular(50)),
                   child: Center(
                     child: Text("View More Blogs",
                         style: TextStyle(

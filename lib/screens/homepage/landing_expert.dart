@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 
-class LandingAboutPage extends StatelessWidget {
-  const LandingAboutPage({
+class LandingExpertPage extends StatelessWidget {
+  const LandingExpertPage({
     Key key,
   }) : super(key: key);
 
@@ -13,12 +14,13 @@ class LandingAboutPage extends StatelessWidget {
     return Container(
       width: screenWidth,
       color: lightskin,
+      padding: EdgeInsets.only(top: screenHeight * 0.1),
       child: Row(
         children: [
           Container(
               width: screenWidth * 0.5,
               child: Image.asset(
-                "assets/images/about.png",
+                "assets/images/talkExpert.png",
                 fit: BoxFit.contain,
               )),
           Container(
@@ -28,36 +30,36 @@ class LandingAboutPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "About Us",
+                      "We're here for you during COVID-19",
                       style: headingStyle.copyWith(
                           fontSize: 40, fontWeight: FontWeight.w800),
-                      maxLines: 1,
+                      maxLines: 4,
                     ),
                     SizedBox(height: 35),
                     Text(
-                      "Mood Buster is a growing community working towards changing the way individuals think & act about problems related to Mental Health",
+                      "Click the link below to find out how you can seek support and get access to resources, tools and useful information to help you during this time.",
+                      textAlign: TextAlign.justify,
                       style: TextStyle(
                         fontSize: 20,
                       ),
-                      maxLines: 4,
+                      maxLines: 20,
                     ),
                     SizedBox(height: 40),
-                    InkWell(
-                      onTap: () {},
+                    HoverButton(
+                      onpressed: () {},
+                      hoverColor: tan.withOpacity(0.5),
                       child: Container(
                           width: 200,
                           height: 60,
                           decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey[900].withOpacity(0.5),
-                                    spreadRadius: 2,
-                                    blurRadius: 10)
-                              ],
-                              color: Colors.white54,
-                              borderRadius: BorderRadius.circular(15)),
+                              border: Border.all(
+                                color: tan,
+                                width: 2,
+                              ),
+                              // boxShadow: [BoxShadow(spreadRadius: 1, blurRadius: 5)],
+                              borderRadius: BorderRadius.circular(50)),
                           child: Center(
-                            child: Text("Get to know us",
+                            child: Text("View More Blogs",
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold)),
                           )),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
+import 'package:moodbuster/widgets/dialog_box.dart';
 
 class LandingChatPage extends StatelessWidget {
   const LandingChatPage({
@@ -35,20 +37,20 @@ class LandingChatPage extends StatelessWidget {
                       maxLines: 4,
                     ),
                     SizedBox(height: 40),
-                    InkWell(
-                      onTap: () {},
+                    HoverButton(
+                      onpressed: () {
+                        _showMenuDialog(context);
+                      },
+                      hoverColor: tan.withOpacity(0.5),
                       child: Container(
                           width: 200,
                           height: 60,
                           decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey[900].withOpacity(0.5),
-                                    spreadRadius: 2,
-                                    blurRadius: 10)
-                              ],
-                              color: Colors.white54,
-                              borderRadius: BorderRadius.circular(15)),
+                              border: Border.all(
+                                color: tan,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(50)),
                           child: Center(
                             child: Text("Join In",
                                 style: TextStyle(
@@ -65,5 +67,10 @@ class LandingChatPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _showMenuDialog(BuildContext context) {
+    Widget dialog = ShowMenuDialogBox();
+    showDialog(context: context, builder: (BuildContext context) => dialog);
   }
 }

@@ -29,7 +29,7 @@ class Footer extends StatelessWidget {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold)),
                         Text(
-                            "\n\nOur Team\n\nTerms and Conditions\n\nPrivacy Policy",
+                            "\nOur Team\n\nTerms and Conditions\n\nPrivacy Policy",
                             style: TextStyle(color: Colors.white))
                       ],
                     )),
@@ -92,20 +92,24 @@ class Footer extends StatelessWidget {
                                   onPressed: () {}),
                             ),
                           ],
-                        )
+                        ),
                       ],
                     )),
               ],
             ),
-            Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("2021 \u00a9 All rights reserved || Mood Buster",
-                    style: TextStyle(color: Colors.white)),
-              ),
-              Spacer()
-            ]),
+            Container(
+              color: Color(0XFF282828),
+              width: screenWidth,
+              child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("2021 \u00a9 All rights reserved || Mood Buster",
+                      style: TextStyle(color: Colors.white)),
+                ),
+                Spacer()
+              ]),
+            ),
           ],
         ));
   }

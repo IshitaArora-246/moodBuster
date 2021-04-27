@@ -44,7 +44,7 @@ class _NavBarState extends State<NavBar> {
         },
       },
       {
-        'name': 'Chat Forum',
+        'name': "Let's Talk",
         'onTap': () {
           widget.parent.setState(() {
             widget.parent.currentPage = 'chat';
@@ -52,7 +52,7 @@ class _NavBarState extends State<NavBar> {
         },
       },
       {
-        'name': 'Expert Panel',
+        'name': 'Support',
         'onTap': () {
           widget.parent.setState(() {
             widget.parent.currentPage = 'suggestion';

@@ -118,7 +118,7 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                                               color: Color(0XFFA6DAE8),
                                               width: 2),
                                         ),
-                                        labelText: "Email Addresssss",
+                                        labelText: "Email Address",
                                         labelStyle: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           color: Colors.grey.shade700,
@@ -275,16 +275,14 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                                         children: [
                                           Center(
                                               child: Text(
-                                                  "Let's get bit familiar :)",
+                                                  "Let's get a bit familiar :)",
                                                   style: headingStyle)),
                                           SizedBox(height: 20),
                                           TextFormField(
                                             validator: (value) {
                                               if (value.isEmpty ||
-                                                  value == null ||
-                                                  (value.length < 10 &&
-                                                      value.length > 6)) {
-                                                return "Length of username should be between 6-10 characters";
+                                                  value.length > 6) {
+                                                return "Length of username should be more than 6 characters";
                                               }
                                               return null;
                                             },

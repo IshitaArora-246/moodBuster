@@ -206,9 +206,10 @@ class _MessageFieldState extends State<MessageField> {
                 ? null
                 : () {
                     setState(() {});
-                    messageController.clear();
+
                     DatabaseService()
                         .sendMessage(userName, messageController.text, userUid);
+                    messageController.clear();
                   })
       ],
     );

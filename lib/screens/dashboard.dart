@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:moodbuster/screens/about_us.dart';
 import 'package:moodbuster/screens/blog_page.dart';
 import 'package:moodbuster/screens/chat_forum.dart';
-import 'package:moodbuster/screens/home_page.dart';
+import 'package:moodbuster/screens/homepage/home_page.dart';
 import 'package:moodbuster/screens/talk_to_expert_page.dart';
 import 'package:moodbuster/widgets/my_drawer.dart';
 import 'package:moodbuster/widgets/navbar.dart';
