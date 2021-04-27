@@ -53,7 +53,7 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      screenWidth < 700
+                      screenWidth < 870
                           ? Container()
                           : Expanded(
                               child: Container(
@@ -245,7 +245,9 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                                                 )),
                                             Center(
                                                 child: Text(
-                                                    "Sign-in with google",
+                                                    screenWidth > 450
+                                                        ? "Sign-in with google"
+                                                        : "Sign-in",
                                                     style: TextStyle(
                                                         fontSize: 20,
                                                         color: Colors.black))),

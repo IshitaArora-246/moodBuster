@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/models/UserModel.dart';
 import 'package:moodbuster/screens/dashboard.dart';
@@ -21,6 +22,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        backgroundColor: lightskin,
+        buttonColor: tan.withOpacity(0.5),
+        fontFamily: paraFont,
+        hoverColor: tan.withOpacity(0.8),
+      ),
       home: Consumer<UserModel>(
         builder: (_, user, __) {
           if (user == null) {

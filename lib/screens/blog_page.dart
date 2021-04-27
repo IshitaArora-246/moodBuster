@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/screens/blog_screen.dart';
@@ -82,45 +83,57 @@ class BlogCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Container(
-          height: 300,
-          width: 500,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              "$imageUrl",
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.medium,
+    return HoverContainer(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          HoverContainer(
+            hoverHeight: 335,
+            hoverWidth: 535,
+            hoverDecoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                      color: tan.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 10)
+                ]),
+            height: 300,
+            width: 500,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.network(
+                "$imageUrl",
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.medium,
+              ),
             ),
           ),
-        ),
-        InkWell(
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => BlogScreen(
-                          blogData: blogData,
-                        )));
-          },
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 30),
-            height: 100,
-            width: 300,
-            color: Colors.white.withOpacity(0.7),
-            child: Center(
-              child: Text("$title",
-                  maxLines: 3,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 18)),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlogScreen(
+                            blogData: blogData,
+                          )));
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              height: 100,
+              width: 300,
+              color: Colors.white.withOpacity(0.7),
+              child: Center(
+                child: Text("$title",
+                    maxLines: 3,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 18)),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

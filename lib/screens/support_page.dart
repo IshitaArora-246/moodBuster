@@ -3,14 +3,14 @@ import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 
-class TalkToExpertPage extends StatefulWidget {
-  const TalkToExpertPage({Key key}) : super(key: key);
+class SupportPage extends StatefulWidget {
+  const SupportPage({Key key}) : super(key: key);
 
   @override
-  _TalkToExpertPageState createState() => _TalkToExpertPageState();
+  _SupportPageState createState() => _SupportPageState();
 }
 
-class _TalkToExpertPageState extends State<TalkToExpertPage> {
+class _SupportPageState extends State<SupportPage> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -81,8 +81,9 @@ class _TalkToExpertPageState extends State<TalkToExpertPage> {
                         width: 200,
                         height: 60,
                         decoration: BoxDecoration(
+                            color: tan.withOpacity(0.4),
                             border: Border.all(
-                              color: tan,
+                              color: tan.withOpacity(0.4),
                               width: 2,
                             ),
                             borderRadius: BorderRadius.circular(50)),
@@ -115,7 +116,9 @@ class _TalkToExpertPageState extends State<TalkToExpertPage> {
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(width: 2, color: tan)),
-          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: tan)),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: tan, width: 2.5),
+          ),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: tan.withOpacity(0.6))),
         ),

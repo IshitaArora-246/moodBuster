@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 final Color tan = Color(0XFFC19A6B);
 final Color lightskin = Color(0XFFfff2e3);
 const headingFont = 'Palanquin';
-const paraFont = 'Roboto';
+const paraFont = 'Lato';
 const rouge = 'RougeScript';
 
 final headingStyle = TextStyle(
@@ -19,5 +19,3 @@ final paraStyle = TextStyle(
   fontWeight: FontWeight.normal,
   color: Colors.grey[900],
 );
-
-

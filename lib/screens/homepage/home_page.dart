@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth= MediaQuery.of(context).size.width;
     return Material(
       child: SingleChildScrollView(
         child: Column(
@@ -24,6 +25,19 @@ class HomePage extends StatelessWidget {
             LandingAboutPage(),
             SizedBox(height: 20),
             Footer(),
+            Container(
+              color: Color(0XFF282828),
+              width: screenWidth,
+              child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("2021 \u00a9 All rights reserved || Mood Buster",
+                      style: TextStyle(color: Colors.white)),
+                ),
+                Spacer()
+              ]),
+            ),
           ],
         ),
       ),

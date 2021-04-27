@@ -70,8 +70,9 @@ class LandingBlogPage extends StatelessWidget {
                   width: 200,
                   height: 60,
                   decoration: BoxDecoration(
+                      color: tan.withOpacity(0.4),
                       border: Border.all(
-                        color: tan,
+                        color: tan.withOpacity(0.4),
                         width: 2,
                       ),
                       // boxShadow: [BoxShadow(spreadRadius: 1, blurRadius: 5)],

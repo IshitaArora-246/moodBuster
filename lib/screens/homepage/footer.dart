@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Footer extends StatelessWidget {
   const Footer({
@@ -24,6 +25,25 @@ class Footer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Center(
+                          child: Container(
+                              margin: EdgeInsets.only(left: 65, top: 30),
+                              child: Text("MB",
+                                  style: GoogleFonts.lato(
+                                    textStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 100,
+                                        letterSpacing: -25),
+                                  ))),
+                        ),
+                      ],
+                    )),
+                Container(
+                    width: screenWidth * 0.3,
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         Text("Quick links",
                             style: TextStyle(
                                 color: Colors.white,
@@ -34,15 +54,18 @@ class Footer extends StatelessWidget {
                       ],
                     )),
                 Container(
-                    width: screenWidth * 0.7,
+                    width: screenWidth * 0.4,
                     padding: EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Connect With Us",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30),
+                          child: Text("Connect With Us",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
                         Row(
                           children: [
                             Padding(
@@ -96,19 +119,6 @@ class Footer extends StatelessWidget {
                       ],
                     )),
               ],
-            ),
-            Container(
-              color: Color(0XFF282828),
-              width: screenWidth,
-              child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-                Spacer(),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("2021 \u00a9 All rights reserved || Mood Buster",
-                      style: TextStyle(color: Colors.white)),
-                ),
-                Spacer()
-              ]),
             ),
           ],
         ));

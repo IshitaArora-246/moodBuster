@@ -46,8 +46,9 @@ class LandingChatPage extends StatelessWidget {
                           width: 200,
                           height: 60,
                           decoration: BoxDecoration(
+                              color: tan.withOpacity(0.4),
                               border: Border.all(
-                                color: tan,
+                                color: tan.withOpacity(0.4),
                                 width: 2,
                               ),
                               borderRadius: BorderRadius.circular(50)),

@@ -4,7 +4,7 @@ import 'package:moodbuster/screens/about_us.dart';
 import 'package:moodbuster/screens/blog_page.dart';
 import 'package:moodbuster/screens/chat_forum.dart';
 import 'package:moodbuster/screens/homepage/home_page.dart';
-import 'package:moodbuster/screens/talk_to_expert_page.dart';
+import 'package:moodbuster/screens/support_page.dart';
 import 'package:moodbuster/widgets/my_drawer.dart';
 import 'package:moodbuster/widgets/navbar.dart';
 
@@ -107,7 +107,7 @@ class DashBoardState extends State<DashBoard> {
         return ChatForum();
         break;
       case "suggestion":
-        return TalkToExpertPage();
+        return SupportPage();
         break;
       case "about":
         return AboutUs();
