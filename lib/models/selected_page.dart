@@ -1,1 +1,0 @@
-enum SelectedPage{homePage}

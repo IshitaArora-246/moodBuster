@@ -51,7 +51,7 @@ class DatabaseService {
   }
 
   Future<void> getInTouchWithExpert({@required Map feedback}) async {
-    User user = auth.currentUser;
+    // User user = auth.currentUser;
 
     expertCollection.add(feedback);
     print("feedback successfully added to Database");
