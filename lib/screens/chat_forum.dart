@@ -24,68 +24,145 @@ class _ChatForumState extends State<ChatForum> {
 
     return Scaffold(
         backgroundColor: lightskin,
-        body: Container(
-            margin: EdgeInsets.only(
-                top: screenHeight * 0.12,
-                left: screenWidth * 0.17,
-                right: screenWidth * 0.17,
-                bottom: screenHeight * 0.1),
-            child: Stack(
+        body: Stack(
+          children: [
+            Row(
               children: [
-                Column(
-                  children: [
-                    Expanded(
-                        child: isValidUser
-                            ? StreamBuilder<Object>(
-                                stream: DatabaseService().getChats(),
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    QuerySnapshot querySnapshot = snapshot.data;
-                                    List<QueryDocumentSnapshot> chats =
-                                        querySnapshot.docs;
-                                    return ListView.builder(
-                                        reverse: true,
-                                        itemCount: chats.length,
-                                        itemBuilder: (context, index) {
-                                          bool isSenderMessage =
-                                              chats[index]["uid"] == userUid;
-                                          Map<String, dynamic> chat =
-                                              chats[index].data();
-                                          return SenderMessage(
-                                              isSenderMessage: isSenderMessage,
-                                              chat: chat);
-                                        });
-                                  } else {
-                                    return Container(
-                                        child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Image.asset("assets/images/chat.png"),
-                                        Text(
-                                            "Build community, Seek help, Build confidence",
-                                            style: headingStyle.copyWith(
-                                                fontSize: 40))
-                                      ],
-                                    ));
-                                  }
-                                })
-                            : Container(
-                                child: Center(
-                                  child: SpinKitCircle(
-                                    color: Colors.brown,
-                                    size: 50.0,
+                Container(
+                  width: screenWidth * 1.4,
+                  margin: EdgeInsets.only(
+                      top: screenHeight * 0.12,
+                      left: screenWidth * 0.1,
+                      right: 50,
+                      bottom: screenHeight * 0.1),
+                  child: Column(
+                    children: [
+                      Expanded(
+                          child: isValidUser
+                              ? StreamBuilder<Object>(
+                                  stream: DatabaseService().getChats(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      QuerySnapshot querySnapshot =
+                                          snapshot.data;
+                                      List<QueryDocumentSnapshot> chats =
+                                          querySnapshot.docs;
+                                      return ListView.builder(
+                                          reverse: true,
+                                          itemCount: chats.length,
+                                          itemBuilder: (context, index) {
+                                            bool isSenderMessage =
+                                                chats[index]["uid"] == userUid;
+                                            Map<String, dynamic> chat =
+                                                chats[index].data();
+                                            return SenderMessage(
+                                                isSenderMessage:
+                                                    isSenderMessage,
+                                                chat: chat);
+                                          });
+                                    } else {
+                                      return Container(
+                                          child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset("assets/images/chat.png"),
+                                          Text(
+                                              "Build community, Seek help, Build confidence",
+                                              style: headingStyle.copyWith(
+                                                  fontSize: 40))
+                                        ],
+                                      ));
+                                    }
+                                  })
+                              : Container(
+                                  child: Center(
+                                    child: SpinKitCircle(
+                                      color: Colors.brown,
+                                      size: 50.0,
+                                    ),
                                   ),
-                                ),
-                              )),
-                    SizedBox(height: 10),
-                    MessageField()
-                  ],
+                                )),
+                      SizedBox(height: 10),
+                      MessageField()
+                    ],
+                  ),
+                ),
+                Spacer(),
+                Container(
+                  height: screenHeight,
+                  width: screenWidth * 0.5,
+                  color: Colors.white,
+                  padding: EdgeInsets.only(
+                      top: screenHeight * 0.12, bottom: screenHeight * 0.1),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              width: 24,
+                              height: 24,
+                              decoration: BoxDecoration(
+                                  color: Colors.brown[900],
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: IconButton(
+                                  icon: Icon(
+                                    Icons.edit_rounded,
+                                    color: tan,
+                                    size: 15,
+                                  ),
+                                  onPressed: () {}),
+                            )
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.black,
+                              minRadius: 90,
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Damon Salvatore",
+                              style: paraStyle.copyWith(
+                                  fontSize: 24, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 25),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Age: 19"),
+                            SizedBox(height: 20),
+                            Text("Gender: Male"),
+                            SizedBox(height: 20),
+                            Text("Email: Example@gmail.com"),
+                            SizedBox(height: 20),
+                            Text("Address: City, State")
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 )
               ],
-            )));
+            )
+          ],
+        ));
   }
 }
 
