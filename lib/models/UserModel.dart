@@ -1,6 +1,3 @@
-import 'package:meta/meta.dart';
-
-@immutable
 class UserModel {
   UserModel({
     this.doc,
