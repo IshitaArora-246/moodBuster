@@ -6,6 +6,7 @@ import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/models/UserModel.dart';
 import 'package:provider/provider.dart';
+import 'dart:html';
 
 class ChatForum extends StatefulWidget {
   ChatForum({Key key}) : super(key: key);
@@ -106,28 +107,32 @@ class _ChatForumState extends State<ChatForum> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Container(
-                              width: 24,
-                              height: 24,
-                              decoration: BoxDecoration(
+                            IconButton(
+                                icon: Icon(
+                                  Icons.edit_rounded,
                                   color: Colors.brown[900],
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: IconButton(
-                                  icon: Icon(
-                                    Icons.edit_rounded,
-                                    color: tan,
-                                    size: 15,
-                                  ),
-                                  onPressed: () {}),
-                            )
+                                  size: 15,
+                                ),
+                                onPressed: () {
+                                  DatabaseService().uploadImageToStorage();
+                                })
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.black,
-                              minRadius: 90,
+                            Flexible(
+                              child: FutureBuilder<Object>(
+                                  // stream: null,
+                                  future: DatabaseService().downloadUrl(),
+                                  builder: (context, snapshot) {
+                                    return CircleAvatar(
+                                      backgroundColor: Colors.black,
+                                      child: Image.network(
+                                          snapshot.data.toString()),
+                                      minRadius: 90,
+                                    );
+                                  }),
                             ),
                           ],
                         ),
@@ -292,3 +297,7 @@ class _MessageFieldState extends State<MessageField> {
     );
   }
 }
+
+
+
+
