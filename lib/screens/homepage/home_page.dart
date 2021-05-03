@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/screens/homepage/footer.dart';
 import 'package:moodbuster/screens/homepage/landing_about.dart';
 import 'package:moodbuster/screens/homepage/landing_blog.dart';
@@ -13,9 +14,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth= MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Material(
-      
+      color: lightskin,
       child: SingleChildScrollView(
         child: Column(
           children: [
