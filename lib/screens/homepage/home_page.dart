@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth= MediaQuery.of(context).size.width;
     return Material(
+      
       child: SingleChildScrollView(
         child: Column(
           children: [

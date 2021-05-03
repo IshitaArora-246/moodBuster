@@ -17,8 +17,8 @@ class LandingChatPage extends StatelessWidget {
       child: Row(
         children: [
           Container(
-              width: screenWidth * 0.5,
-              padding: EdgeInsets.symmetric(horizontal: 80),
+              width: screenWidth * 0.53,
+              padding: EdgeInsets.only(left: 80, right: 80),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -30,7 +30,7 @@ class LandingChatPage extends StatelessWidget {
                     ),
                     SizedBox(height: 35),
                     Text(
-                      "Group chats allow you to connect with other people like you and build a community.Group chats explore a\nrange of helpful topics.",
+                      "Group chats allow you to connect with other people like you and build a community. Group chats explore a range of helpful topics.",
                       style: TextStyle(
                         fontSize: 20,
                       ),
@@ -60,7 +60,8 @@ class LandingChatPage extends StatelessWidget {
                     )
                   ])),
           Container(
-              width: screenWidth * 0.5,
+              width: screenWidth * 0.44,
+              padding: EdgeInsets.only(right: 80),
               child: Image.asset(
                 "assets/images/page1Chat.png",
                 fit: BoxFit.contain,
