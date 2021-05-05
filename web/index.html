@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    Fore more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-  -->
   <base href="/">
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Check out this website!">
+  <meta name="description" content="Mood Buster is a community working on problems related to mental health">
   <meta name="google-signin-client_id" content="572848500561-sdcu664mklnl45hg67rcqdrube2qn7ba.apps.googleusercontent.com">
 
   <!-- iOS meta tags & icons -->
@@ -29,22 +18,18 @@
 
   <title>Mood Buster</title>
   <link rel="manifest" href="manifest.json">
-    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-storage.js"></script>
 </head>
+
 <body>
-   <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
-
-
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
 
 <script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
     apiKey: "AIzaSyCck4pbXYoaiqW0nrBslBfUJLJ7fJSNaZ4",
     authDomain: "mood-buster-app.firebaseapp.com",
@@ -57,14 +42,9 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-
-  
 </script>
 
-
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
+<!-- Flutter initialization -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('flutter-first-frame', function () {
@@ -73,8 +53,6 @@
     }
   </script>
 
-  <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/1.0.5/firebase-firestore.js"></script>
   <script src="main.dart.js" type="application/javascript"></script>
  
 </body>

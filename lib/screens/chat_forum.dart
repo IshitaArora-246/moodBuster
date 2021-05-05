@@ -6,7 +6,6 @@ import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/models/UserModel.dart';
 import 'package:provider/provider.dart';
-import 'dart:html';
 
 class ChatForum extends StatefulWidget {
   ChatForum({Key key}) : super(key: key);
@@ -24,79 +23,77 @@ class _ChatForumState extends State<ChatForum> {
     bool isValidUser = userUid != null;
 
     return Scaffold(
-        backgroundColor: lightskin,
+        // backgroundColor: lightskin,
         body: Stack(
+      children: [
+        Row(
           children: [
-            Row(
-              children: [
-                Container(
-                  width: screenWidth * 1.4,
-                  margin: EdgeInsets.only(
-                      top: screenHeight * 0.12,
-                      left: screenWidth * 0.1,
-                      right: 50,
-                      bottom: screenHeight * 0.1),
-                  child: Column(
-                    children: [
-                      Expanded(
-                          child: isValidUser
-                              ? StreamBuilder<Object>(
-                                  stream: DatabaseService().getChats(),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData) {
-                                      QuerySnapshot querySnapshot =
-                                          snapshot.data;
-                                      List<QueryDocumentSnapshot> chats =
-                                          querySnapshot.docs;
-                                      return ListView.builder(
-                                          reverse: true,
-                                          itemCount: chats.length,
-                                          itemBuilder: (context, index) {
-                                            bool isSenderMessage =
-                                                chats[index]["uid"] == userUid;
-                                            Map<String, dynamic> chat =
-                                                chats[index].data();
-                                            return SenderMessage(
-                                                isSenderMessage:
-                                                    isSenderMessage,
-                                                chat: chat);
-                                          });
-                                    } else {
-                                      return Container(
-                                          child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Image.asset("assets/images/chat.png"),
-                                          Text(
-                                              "Build community, Seek help, Build confidence",
-                                              style: headingStyle.copyWith(
-                                                  fontSize: 40))
-                                        ],
-                                      ));
-                                    }
-                                  })
-                              : Container(
-                                  child: Center(
-                                    child: SpinKitCircle(
-                                      color: Colors.brown,
-                                      size: 50.0,
-                                    ),
-                                  ),
-                                )),
-                      SizedBox(height: 10),
-                      MessageField()
-                    ],
-                  ),
-                ),
-                Spacer(),
-                // ProfileSection()
-              ],
-            )
+            Container(
+              color: lightskin,
+              width: screenWidth * 0.7,
+              padding: EdgeInsets.only(
+                  top: screenHeight * 0.12,
+                  left: 50,
+                  right: 50,
+                  bottom: screenHeight * 0.1),
+              child: Column(
+                children: [
+                  Expanded(
+                      child: isValidUser
+                          ? StreamBuilder<Object>(
+                              stream: DatabaseService().getChats(),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  QuerySnapshot querySnapshot = snapshot.data;
+                                  List<QueryDocumentSnapshot> chats =
+                                      querySnapshot.docs;
+                                  return ListView.builder(
+                                      reverse: true,
+                                      itemCount: chats.length,
+                                      itemBuilder: (context, index) {
+                                        bool isSenderMessage =
+                                            chats[index]["uid"] == userUid;
+                                        Map<String, dynamic> chat =
+                                            chats[index].data();
+                                        return SenderMessage(
+                                            isSenderMessage: isSenderMessage,
+                                            chat: chat);
+                                      });
+                                } else {
+                                  return Container(
+                                      child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset("assets/images/chat.png"),
+                                      Text(
+                                          "Build community, Seek help, Build confidence",
+                                          style: headingStyle.copyWith(
+                                              fontSize: 40))
+                                    ],
+                                  ));
+                                }
+                              })
+                          : Container(
+                              child: Center(
+                                child: SpinKitCircle(
+                                  color: Colors.brown,
+                                  size: 50.0,
+                                ),
+                              ),
+                            )),
+                  SizedBox(height: 10),
+                  MessageField()
+                ],
+              ),
+            ),
+            Spacer(),
+            ProfileSection()
           ],
-        ));
+        )
+      ],
+    ));
   }
 }
 
@@ -111,10 +108,10 @@ class ProfileSection extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     return Container(
       height: screenHeight,
-      width: screenWidth * 0.5,
-      color: Colors.white,
+      width: screenWidth * 0.25,
+      color: Colors.green[50],
       padding:
-          EdgeInsets.only(top: screenHeight * 0.12, bottom: screenHeight * 0.1),
+          EdgeInsets.only(top: screenHeight * 0.1, bottom: screenHeight * 0.1),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
@@ -131,25 +128,24 @@ class ProfileSection extends StatelessWidget {
                       size: 15,
                     ),
                     onPressed: () {
-                      // DatabaseService().uploadImageToStorage();
+                      DatabaseService().uploadImageToStorage();
                     })
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Flexible(
-                //   child: FutureBuilder<Object>(
-                //       // stream: null,
-                //       // future: DatabaseService().downloadUrl(),
-                //       builder: (context, snapshot) {
-                //     return CircleAvatar(
-                //       backgroundColor: Colors.black,
-                //       child: Image.network(snapshot.data.toString()),
-                //       minRadius: 90,
-                //     );
-                //   }),
-                // ),
+                Flexible(
+                  child: FutureBuilder(
+                      future: DatabaseService().downloadUrl(),
+                      builder: (context, snapshot) {
+                        return CircleAvatar(
+                          backgroundColor: Colors.black,
+                          child: Image.network(snapshot.data.toString()),
+                          minRadius: 90,
+                        );
+                      }),
+                ),
               ],
             ),
             SizedBox(height: 10),

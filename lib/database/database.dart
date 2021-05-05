@@ -1,5 +1,4 @@
 import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,7 +29,6 @@ class DatabaseService {
 
   Future<bool> isUserDocExists() async {
     User user = auth.currentUser;
-    // QuerySnapshot querySnapshot = await userCollection.get();
     DocumentSnapshot userDoc = await userCollection.doc(user.uid).get();
     print(user.uid);
     if (userDoc.exists) {
@@ -54,8 +52,6 @@ class DatabaseService {
   }
 
   Future<void> getInTouchWithExpert({@required Map feedback}) async {
-    // User user = auth.currentUser;
-
     expertCollection.add(feedback);
     print("feedback successfully added to Database");
   }
@@ -86,49 +82,47 @@ class DatabaseService {
         .delete();
   }
 
-  // Stream userStream() {
-  //   User user = auth.currentUser;
+  Stream userStream() {
+    return userCollection.doc("JIYiNKwtF5bGefNYeuYvLSGrpDi2").snapshots();
+  }
 
-  //   return userCollection.doc("JIYiNKwtF5bGefNYeuYvLSGrpDi2").snapshots();
-  // }
+  Future<Uri> downloadUrl() async {
+    return await fb
+        .storage()
+        .refFromURL('gs://mood-buster-app.appspot.com/')
+        .child("gs://mood-buster-app.appspot.com/IMG_20200101_213251.jpg")
+        .getDownloadURL();
+  }
 
-  // Future<Uri> downloadUrl() async {
-  //   return await fb
-  //       .storage()
-  //       .refFromURL('gs://mood-buster-app.appspot.com/')
-  //       .child("gs://mood-buster-app.appspot.com/IMG_20200101_213251.jpg")
-  //       .getDownloadURL();
-  // }
+  void uploadImage({@required Function(File file) onSelected}) {
+    InputElement uploadInput = FileUploadInputElement()..accept = 'image/*';
+    uploadInput.click();
 
-  // void uploadImage({@required Function(File file) onSelected}) {
-  //   InputElement uploadInput = FileUploadInputElement()..accept = 'image/*';
-  //   uploadInput.click();
+    uploadInput.onChange.listen((event) {
+      final file = uploadInput.files.first;
+      final reader = FileReader();
+      reader.readAsDataUrl(file);
+      reader.onLoad.listen((event) {
+        onSelected(file);
+        print("Picture uploaded to firebase");
+      });
+    });
+  }
 
-  //   uploadInput.onChange.listen((event) {
-  //     final file = uploadInput.files.first;
-  //     final reader = FileReader();
-  //     reader.readAsDataUrl(file);
-  //     reader.onLoad.listen((event) {
-  //       onSelected(file);
-  //       print("Picture uploaded to firebase");
-  //     });
-  //   });
-  // }
+  void uploadImageToStorage() {
+    User user = auth.currentUser;
 
-  // void uploadImageToStorage() {
-  //   User user = auth.currentUser;
-
-  //   final dateTime = DateTime.now();
-  //   final userId = user.uid;
-  //   final path = '$userId/$dateTime';
-  //   uploadImage(onSelected: (file) {
-  //     fb
-  //         .storage()
-  //         .refFromURL('gs://mood-buster-app.appspot.com/')
-  //         .child(path)
-  //         .put(file);
-  //   });
-  // }
+    final dateTime = DateTime.now();
+    final userId = user.uid;
+    final path = '$userId/$dateTime';
+    uploadImage(onSelected: (file) {
+      fb
+          .storage()
+          .refFromURL('gs://mood-buster-app.appspot.com/')
+          .child(path)
+          .put(file);
+    });
+  }
 
   Future<String> getName() async {
     User user = auth.currentUser;

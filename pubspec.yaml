@@ -33,6 +33,7 @@ dependencies:
   cloud_firestore: ^1.0.5
   firebase: ^9.0.1
   google_sign_in: ^5.0.2
+  firebase_storage: null
   provider: ^5.0.0
   shared_preferences: ^2.0.5
   nb_utils: ^4.2.2
