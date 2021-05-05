@@ -74,6 +74,10 @@ class DatabaseService {
         .snapshots();
   }
 
+  Future<void> deleteChats() {
+    return FirebaseFirestore.instance.collection("chats").doc().delete();
+  }
+
   Future<String> getName() async {
     User user = auth.currentUser;
     DocumentSnapshot doc = await userCollection.doc(user.uid).get();
