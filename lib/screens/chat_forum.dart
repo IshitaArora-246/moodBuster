@@ -19,7 +19,7 @@ class _ChatForumState extends State<ChatForum> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     var userUid = Provider.of<UserModel>(context).uid;
     bool isValidUser = userUid != null;
 
@@ -92,82 +92,94 @@ class _ChatForumState extends State<ChatForum> {
                   ),
                 ),
                 Spacer(),
-                Container(
-                  height: screenHeight,
-                  width: screenWidth * 0.5,
-                  color: Colors.white,
-                  padding: EdgeInsets.only(
-                      top: screenHeight * 0.12, bottom: screenHeight * 0.1),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 5),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            IconButton(
-                                icon: Icon(
-                                  Icons.edit_rounded,
-                                  color: Colors.brown[900],
-                                  size: 15,
-                                ),
-                                onPressed: () {
-                                  DatabaseService().uploadImageToStorage();
-                                })
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              child: FutureBuilder<Object>(
-                                  // stream: null,
-                                  future: DatabaseService().downloadUrl(),
-                                  builder: (context, snapshot) {
-                                    return CircleAvatar(
-                                      backgroundColor: Colors.black,
-                                      child: Image.network(
-                                          snapshot.data.toString()),
-                                      minRadius: 90,
-                                    );
-                                  }),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Damon Salvatore",
-                              style: paraStyle.copyWith(
-                                  fontSize: 24, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 25),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Age: 19"),
-                            SizedBox(height: 20),
-                            Text("Gender: Male"),
-                            SizedBox(height: 20),
-                            Text("Email: Example@gmail.com"),
-                            SizedBox(height: 20),
-                            Text("Address: City, State")
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                )
+                // ProfileSection()
               ],
             )
           ],
         ));
+  }
+}
+
+class ProfileSection extends StatelessWidget {
+  const ProfileSection({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    return Container(
+      height: screenHeight,
+      width: screenWidth * 0.5,
+      color: Colors.white,
+      padding:
+          EdgeInsets.only(top: screenHeight * 0.12, bottom: screenHeight * 0.1),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 30),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 5),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                    icon: Icon(
+                      Icons.edit_rounded,
+                      color: Colors.brown[900],
+                      size: 15,
+                    ),
+                    onPressed: () {
+                      // DatabaseService().uploadImageToStorage();
+                    })
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Flexible(
+                //   child: FutureBuilder<Object>(
+                //       // stream: null,
+                //       // future: DatabaseService().downloadUrl(),
+                //       builder: (context, snapshot) {
+                //     return CircleAvatar(
+                //       backgroundColor: Colors.black,
+                //       child: Image.network(snapshot.data.toString()),
+                //       minRadius: 90,
+                //     );
+                //   }),
+                // ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Damon Salvatore",
+                  style: paraStyle.copyWith(
+                      fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            SizedBox(height: 25),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Age: 19"),
+                SizedBox(height: 20),
+                Text("Gender: Male"),
+                SizedBox(height: 20),
+                Text("Email: Example@gmail.com"),
+                SizedBox(height: 20),
+                Text("Address: City, State")
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -297,7 +309,3 @@ class _MessageFieldState extends State<MessageField> {
     );
   }
 }
-
-
-
-

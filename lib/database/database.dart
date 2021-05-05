@@ -77,49 +77,58 @@ class DatabaseService {
         .snapshots();
   }
 
-  Stream userStream() {
+  Future<void> deleteChats() {
     User user = auth.currentUser;
 
-    return userCollection.doc("JIYiNKwtF5bGefNYeuYvLSGrpDi2").snapshots();
+    return FirebaseFirestore.instance
+        .collection("chats")
+        .doc(user.uid)
+        .delete();
   }
 
-  Future<Uri> downloadUrl() async {
-    return await fb
-        .storage()
-        .refFromURL('gs://mood-buster-app.appspot.com/')
-        .child("gs://mood-buster-app.appspot.com/IMG_20200101_213251.jpg")
-        .getDownloadURL();
-  }
+  // Stream userStream() {
+  //   User user = auth.currentUser;
 
-  void uploadImage({@required Function(File file) onSelected}) {
-    InputElement uploadInput = FileUploadInputElement()..accept = 'image/*';
-    uploadInput.click();
+  //   return userCollection.doc("JIYiNKwtF5bGefNYeuYvLSGrpDi2").snapshots();
+  // }
 
-    uploadInput.onChange.listen((event) {
-      final file = uploadInput.files.first;
-      final reader = FileReader();
-      reader.readAsDataUrl(file);
-      reader.onLoad.listen((event) {
-        onSelected(file);
-        print("Picture uploaded to firebase");
-      });
-    });
-  }
+  // Future<Uri> downloadUrl() async {
+  //   return await fb
+  //       .storage()
+  //       .refFromURL('gs://mood-buster-app.appspot.com/')
+  //       .child("gs://mood-buster-app.appspot.com/IMG_20200101_213251.jpg")
+  //       .getDownloadURL();
+  // }
 
-  void uploadImageToStorage() {
-    User user = auth.currentUser;
+  // void uploadImage({@required Function(File file) onSelected}) {
+  //   InputElement uploadInput = FileUploadInputElement()..accept = 'image/*';
+  //   uploadInput.click();
 
-    final dateTime = DateTime.now();
-    final userId = user.uid;
-    final path = '$userId/$dateTime';
-    uploadImage(onSelected: (file) {
-      fb
-          .storage()
-          .refFromURL('gs://mood-buster-app.appspot.com/')
-          .child(path)
-          .put(file);
-    });
-  }
+  //   uploadInput.onChange.listen((event) {
+  //     final file = uploadInput.files.first;
+  //     final reader = FileReader();
+  //     reader.readAsDataUrl(file);
+  //     reader.onLoad.listen((event) {
+  //       onSelected(file);
+  //       print("Picture uploaded to firebase");
+  //     });
+  //   });
+  // }
+
+  // void uploadImageToStorage() {
+  //   User user = auth.currentUser;
+
+  //   final dateTime = DateTime.now();
+  //   final userId = user.uid;
+  //   final path = '$userId/$dateTime';
+  //   uploadImage(onSelected: (file) {
+  //     fb
+  //         .storage()
+  //         .refFromURL('gs://mood-buster-app.appspot.com/')
+  //         .child(path)
+  //         .put(file);
+  //   });
+  // }
 
   Future<String> getName() async {
     User user = auth.currentUser;
