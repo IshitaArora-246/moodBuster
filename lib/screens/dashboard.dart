@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:moodbuster/screens/about_us.dart';
 import 'package:moodbuster/screens/blog_page.dart';
-import 'package:moodbuster/screens/chat_forum.dart';
+import 'package:moodbuster/screens/chat/chat_forum.dart';
 import 'package:moodbuster/screens/homepage/home_page.dart';
 import 'package:moodbuster/screens/support_page.dart';
 import 'package:moodbuster/widgets/my_drawer.dart';
