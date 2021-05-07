@@ -86,14 +86,16 @@ class DatabaseService {
     return userCollection.doc("JIYiNKwtF5bGefNYeuYvLSGrpDi2").snapshots();
   }
 
-  Future<Uri> downloadUrl() async {
-    return await fb
+  Future<Uri> downloadUrl(String photoPath) async {
+    var reference = fb
         .storage()
         .refFromURL('gs://mood-buster-app.appspot.com/')
-        .child("gs://mood-buster-app.appspot.com/IMG_20200101_213251.jpg")
-        .getDownloadURL();
+        .child(photoPath);
+
+    return await reference.getDownloadURL();
   }
 
+// To open file dialog box  in order to select image
   void uploadImage({@required Function(File file) onSelected}) {
     InputElement uploadInput = FileUploadInputElement()..accept = 'image/*';
     uploadInput.click();
@@ -104,31 +106,49 @@ class DatabaseService {
       reader.readAsDataUrl(file);
       reader.onLoad.listen((event) {
         onSelected(file);
-        print("Picture uploaded to firebase");
+        print("Picture selected which is to be uploaded in firebase");
       });
     });
   }
 
+//image is uploaded to firebase storage
   void uploadImageToStorage() {
     User user = auth.currentUser;
-
-    final dateTime = DateTime.now();
+    // final dateTime = DateTime.now();
     final userId = user.uid;
-    final path = '$userId/$dateTime';
+    final path = '$userId/dp-$userId';
+
     uploadImage(onSelected: (file) {
       fb
           .storage()
           .refFromURL('gs://mood-buster-app.appspot.com/')
           .child(path)
-          .put(file);
+          .put(file)
+          .future
+          .then((_) {
+        userCollection.doc(user.uid).update({'photo_url': path});
+      });
     });
+    print("Profile picture updated in firebase and shown to user");
+  }
+
+  Future<Map<String, dynamic>> getDoc() async {
+    User user = auth.currentUser;
+    DocumentSnapshot doc = await userCollection.doc(user.uid).get();
+    return doc.data();
   }
 
   Future<String> getName() async {
     User user = auth.currentUser;
     DocumentSnapshot doc = await userCollection.doc(user.uid).get();
-
     return doc.data()["username"];
+  }
+
+  Future<String> getPhotoUrl() async {
+    User user = auth.currentUser;
+    DocumentSnapshot doc = await userCollection.doc(user.uid).get();
+    print("----------------${doc.data()["photo_url"]}");
+    return doc.data()["photo_url"];
   }
 
   Future<String> getEmail() async {
