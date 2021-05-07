@@ -24,13 +24,13 @@ class _ChatForumState extends State<ChatForum> {
     bool isValidUser = userUid != null;
 
     return Scaffold(
-        backgroundColor: lightskin,
+        backgroundColor: lightskin.withOpacity(0.8),
         body: Stack(
           children: [
             Row(
               children: [
                 Container(
-                  width: screenWidth * 0.75,
+                  width: screenWidth > 815 ? screenWidth * 0.75 : screenWidth,
                   padding: EdgeInsets.only(
                       top: screenHeight * 0.12,
                       left: 50,
@@ -86,7 +86,7 @@ class _ChatForumState extends State<ChatForum> {
                   ),
                 ),
                 Spacer(),
-                ProfileSection()
+                screenWidth > 815 ? ProfileSection() : SizedBox()
               ],
             )
           ],
