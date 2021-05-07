@@ -17,6 +17,8 @@ class BlogPage extends StatefulWidget {
 class _BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    print(screenWidth);
     return Scaffold(
         backgroundColor: lightskin,
         body: Container(
@@ -38,7 +40,7 @@ class _BlogPageState extends State<BlogPage> {
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                                     childAspectRatio: 2,
-                                    crossAxisCount: 2,
+                                    crossAxisCount: screenWidth > 800 ? 2 : 1,
                                     crossAxisSpacing: 20,
                                     mainAxisSpacing: 20),
                             itemCount: blogs.length,

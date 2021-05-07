@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:moodbuster/constants/textStyle.dart';
+import 'package:moodbuster/screens/chat/profile.dart';
+import 'package:moodbuster/widgets/dialog_box.dart';
 import 'package:moodbuster/widgets/nav_item.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -30,6 +33,30 @@ class MyDrawer extends StatelessWidget {
               endIndent: 10,
               indent: 10,
             ),
+            Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
+                child: InkWell(
+                    onTap: () {
+                      _showMenuDialog(context);
+                    },
+                    child: Container(
+                        child: Text(
+                      "Sign-up/Login",
+                      style: paraStyle,
+                    )))),
+            Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
+                child: InkWell(
+                    onTap: () {
+                      ProfileSection();
+                    },
+                    child: Container(
+                        child: Text(
+                      "Profile",
+                      style: paraStyle,
+                    )))),
             ...navItems.map((e) => Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
@@ -40,5 +67,10 @@ class MyDrawer extends StatelessWidget {
                 )),
           ],
         ));
+  }
+
+  void _showMenuDialog(BuildContext context) {
+    Widget dialog = ShowMenuDialogBox();
+    showDialog(context: context, builder: (BuildContext context) => dialog);
   }
 }
