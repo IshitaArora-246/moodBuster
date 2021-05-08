@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/screens/chat/mobile_profile_screen.dart';
-import 'package:moodbuster/screens/chat/profile.dart';
 import 'package:moodbuster/widgets/dialog_box.dart';
 import 'package:moodbuster/widgets/nav_item.dart';
 
