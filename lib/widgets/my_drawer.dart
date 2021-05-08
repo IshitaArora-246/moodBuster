@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moodbuster/constants/textStyle.dart';
+import 'package:moodbuster/screens/chat/mobile_profile_screen.dart';
 import 'package:moodbuster/screens/chat/profile.dart';
 import 'package:moodbuster/widgets/dialog_box.dart';
 import 'package:moodbuster/widgets/nav_item.dart';
@@ -50,7 +51,10 @@ class MyDrawer extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
                 child: InkWell(
                     onTap: () {
-                      ProfileSection();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MobProfile()));
                     },
                     child: Container(
                         child: Text(

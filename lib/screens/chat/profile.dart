@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/models/UserModel.dart';
@@ -36,8 +37,6 @@ class _ProfileSectionState extends State<ProfileSection> {
     var _currentUser = Provider.of<UserModel>(context);
     if (_currentUser.uid == null) return Container();
 
-    print(screenWidth);
-
     return Container(
       height: screenHeight,
       width: screenWidth * 0.25,
@@ -48,7 +47,7 @@ class _ProfileSectionState extends State<ProfileSection> {
             color: Colors.black.withOpacity(0.1))
       ]),
       padding:
-          EdgeInsets.only(top: screenHeight * 0.1, bottom: screenHeight * 0.2),
+          EdgeInsets.only(top: screenHeight * 0.1, bottom: screenHeight * 0.05),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: FutureBuilder<Object>(
@@ -65,61 +64,100 @@ class _ProfileSectionState extends State<ProfileSection> {
                 );
               }
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                          icon: Icon(
-                            Icons.edit_rounded,
-                            color: Colors.brown[900],
-                            size: 15,
-                          ),
-                          onPressed: () {
-                            DatabaseService().uploadImageToStorage();
-                          })
-                    ],
-                  ),
-                  Center(
-                    child: Container(
-                      height: 150,
-                      width: 150,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(80),
-                          boxShadow: [
-                            BoxShadow(
-                                spreadRadius: 10,
-                                blurRadius: 10,
-                                color: Colors.black.withOpacity(0.1))
-                          ]),
-                      child: Image.network(url.toString()),
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                            icon: Container(
+                              padding: EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                  color: Colors.brown,
+                                  borderRadius: BorderRadius.circular(3)),
+                              child: Icon(
+                                Icons.edit_rounded,
+                                color: Colors.brown[50],
+                                size: 13,
+                              ),
+                            ),
+                            onPressed: () {
+                              DatabaseService().uploadImageToStorage();
+                            })
+                      ],
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "${userDoc['username']}",
-                        style: paraStyle.copyWith(
-                            fontSize: 28, fontWeight: FontWeight.bold),
+                    Center(
+                        child: Center(
+                      child: CircleAvatar(
+                        backgroundColor: Colors.black,
+                        backgroundImage: NetworkImage(url.toString()),
+                        radius: 75,
                       ),
-                    ],
-                  ),
-                  SizedBox(height: 25),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      fieldData("Age: ", "${userDoc['age']}"),
-                      fieldData("Gender: ", "${userDoc['gender']}"),
-                      fieldData("City: ", "${userDoc['city']}"),
-                      fieldData("State: ", "${userDoc['State']}")
-                    ],
-                  ),
-                ],
+                    )
+                        // child: Container(
+                        //   height: 150,
+                        //   width: 150,
+                        //   decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(80),
+                        //       boxShadow: [
+                        //         BoxShadow(
+                        //             spreadRadius: 10,
+                        //             blurRadius: 10,
+                        //             color: Colors.black.withOpacity(0.1))
+                        //       ]),
+                        //   child: Image.network(url.toString()),
+                        // ),
+                        ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "${userDoc['username']}",
+                          style: paraStyle.copyWith(
+                              fontSize: 28, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 25),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        fieldData("Age: ", "${userDoc['age']}"),
+                        fieldData("Gender: ", "${userDoc['gender']}"),
+                        fieldData("City: ", "${userDoc['city']}"),
+                        fieldData("State: ", "${userDoc['State']}")
+                      ],
+                    ),
+                    Center(
+                      child: HoverButton(
+                        onpressed: () async {
+                          setState(() {});
+                        },
+                        child: Container(
+                            width: 200,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: tan.withOpacity(0.4),
+                                border: Border.all(
+                                  color: tan.withOpacity(0.4),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(
+                              child: Text("Update Profile Picture",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold)),
+                            )),
+                      ),
+                    )
+                  ],
+                ),
               );
             }),
       ),

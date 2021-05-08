@@ -5,6 +5,7 @@ import 'package:moodbuster/screens/homepage/landing_blog.dart';
 import 'package:moodbuster/screens/homepage/landing_chat.dart';
 import 'package:moodbuster/screens/homepage/landing_expert.dart';
 import 'package:moodbuster/screens/homepage/landing_main.dart';
+import 'package:moodbuster/screens/homepage/mob_footer.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({
@@ -13,7 +14,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth= MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
+    print(screenWidth);
     return Material(
       child: SingleChildScrollView(
         child: Column(
@@ -24,7 +26,7 @@ class HomePage extends StatelessWidget {
             LandingChatPage(),
             LandingAboutPage(),
             SizedBox(height: 20),
-            Footer(),
+            screenWidth > 815 ? Footer() : MobFooter(),
             Container(
               color: Color(0XFF282828),
               width: screenWidth,

@@ -34,10 +34,13 @@ class _SupportPageState extends State<SupportPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    "Get in touch with experts",
-                    style: headingStyle.copyWith(
-                        fontSize: 45, wordSpacing: 2, letterSpacing: 1.5),
+                  Center(
+                    child: Text(
+                      "Get in touch with experts",
+                      textAlign: TextAlign.center,
+                      style: headingStyle.copyWith(
+                          fontSize: 45, wordSpacing: 2, letterSpacing: 1.5),
+                    ),
                   ),
                   SizedBox(height: 20),
                   Row(

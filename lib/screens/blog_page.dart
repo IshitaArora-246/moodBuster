@@ -18,7 +18,6 @@ class _BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    print(screenWidth);
     return Scaffold(
         backgroundColor: lightskin,
         body: Container(
