@@ -5,13 +5,13 @@ A growing community working towards changing the way individuals think and act t
 Mental Health influences how you think, feel, and behave in daily life. It also determines how we handle stress, relate to others, and make choices. Mental health is important at every stage of life, from childhood and adolescence through adulthood.
 
 ## A glimpse to website
-![Screenshot](screenshot.png)
+![Screenshot](screenshots/home page.png)
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshots/chat screen.png)
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshots/blog page.png)
 
-
+![Screenshot](screenshots/blog screen.png)
 
 ## Link to Website
 https://mood-buster-app.web.app/#/
