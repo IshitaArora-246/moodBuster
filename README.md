@@ -1,5 +1,5 @@
 ## Mood Buster
-A growing community working towards changing the way individuals think and act to mental helath problems.
+A growing community working towards changing the way individuals think and act to mental health problems.
 
 ## Motivation
 Mental Health influences how you think, feel, and behave in daily life. It also determines how we handle stress, relate to others, and make choices. Mental health is important at every stage of life, from childhood and adolescence through adulthood.
