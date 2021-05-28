@@ -15,6 +15,7 @@ class MobFooter extends StatelessWidget {
         width: screenWidth,
         color: Color(0XFF353535),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
                 width: screenWidth * 0.9,
@@ -23,7 +24,7 @@ class MobFooter extends StatelessWidget {
                   children: [
                     Center(
                       child: Container(
-                          margin: EdgeInsets.only(left: 65, top: 30),
+                          margin: EdgeInsets.only(top: 30, bottom: 20),
                           child: Text("MB",
                               style: GoogleFonts.lato(
                                 textStyle: TextStyle(
@@ -38,22 +39,20 @@ class MobFooter extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.white, fontWeight: FontWeight.bold)),
             Text("\nOur Team\n\nTerms and Conditions\n\nPrivacy Policy\n\n",
+                textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white)),
             Container(
-                width: screenWidth * 0.4,
+                width: screenWidth * 0.9,
                 padding: EdgeInsets.all(20),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30),
-                      child: Text("Connect With Us",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold)),
-                    ),
+                    Text("Connect With Us",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold)),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        SizedBox(width: 10),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: IconButton(
@@ -78,6 +77,7 @@ class MobFooter extends StatelessWidget {
                       ],
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),

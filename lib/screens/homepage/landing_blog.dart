@@ -14,28 +14,30 @@ class LandingBlogPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Container(
+        height: screenHeight,
         width: screenWidth,
         color: lightskin,
         child: Column(
-          // mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             Text(
               "Our Blogs",
               style: headingStyle.copyWith(
                   fontSize: 40, fontWeight: FontWeight.w800),
-              maxLines: 4,
+              maxLines: 1,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 30),
+              padding: const EdgeInsets.only(right: 30, left: 30, bottom: 30),
               child: Text(
-                "There are many ways to access information and support about your mental health and wellbeing. Learn about mental health and receive information by reading our blogs",
+                "There are many ways to access information and support about your mental health and wellbeing. Learn about mental health and receive information by reading our blogs.",
                 style: TextStyle(
                   fontSize: 20,
                 ),
                 textAlign: TextAlign.center,
-                maxLines: 4,
+                maxLines: 7,
               ),
             ),
             StreamBuilder<Object>(
@@ -50,8 +52,8 @@ class LandingBlogPage extends StatelessWidget {
                         autoplay: true,
                         autoplayDelay: 1700,
                         layout: SwiperLayout.TINDER,
-                        itemHeight: 300,
-                        itemWidth: 500,
+                        itemHeight: 225,
+                        itemWidth: 450,
                         itemBuilder: (context, index) {
                           return BlogCard(
                               context: context,
@@ -75,7 +77,6 @@ class LandingBlogPage extends StatelessWidget {
                         color: tan.withOpacity(0.4),
                         width: 2,
                       ),
-                      // boxShadow: [BoxShadow(spreadRadius: 1, blurRadius: 5)],
                       borderRadius: BorderRadius.circular(50)),
                   child: Center(
                     child: Text("View More Blogs",
