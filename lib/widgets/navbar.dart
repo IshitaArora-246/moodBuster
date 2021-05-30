@@ -116,43 +116,53 @@ class _NavBarState extends State<NavBar> {
                         ),
                       )
                     : Expanded(
-                        child: Row(
-                          children: [
-                            ...navItems.map((e) => NavItem(
-                                  name: e['name'],
-                                  onTap: e['onTap'],
-                                )),
-                            Spacer(),
-                            Consumer<UserModel>(builder: (_, user, __) {
-                              return InkWell(
-                                onTap: () {
-                                  print("Login Button tapped!");
-                                  if (user == null)
-                                    _showMenuDialog(context);
-                                  else
-                                    FirebaseAuthService().signOut();
+                        child: Consumer<UserModel>(builder: (_, user, __) {
+                          return Row(
+                            children: [
+                              ...navItems.map(
+                                (e) {
+                                  if (user == null && e['name'] == "Let's Talk") {
+                                    return SizedBox();
+                                  }
+                                  return NavItem(
+                                    name: e['name'],
+                                    onTap: e['onTap'],
+                                  );
                                 },
-                                child: Container(
-                                  width: 130,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                      color: tan,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Center(
-                                      child: Text(
-                                          user == null
-                                              ? "Login/Sign-up"
-                                              : "Sign-out",
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 15,
-                                              letterSpacing: 1.05,
-                                              fontWeight: FontWeight.bold))),
-                                ),
-                              );
-                            }),
-                          ],
-                        ),
+                              ),
+                              Spacer(),
+                              Consumer<UserModel>(builder: (_, user, __) {
+                                return InkWell(
+                                  onTap: () {
+                                    print("Login Button tapped!");
+                                    if (user == null)
+                                      _showMenuDialog(context);
+                                    else
+                                      FirebaseAuthService().signOut();
+                                  },
+                                  child: Container(
+                                    width: 130,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                        color: tan,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Center(
+                                        child: Text(
+                                            user == null
+                                                ? "Login/Sign-up"
+                                                : "Sign-out",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 15,
+                                                letterSpacing: 1.05,
+                                                fontWeight: FontWeight.bold))),
+                                  ),
+                                );
+                              }),
+                            ],
+                          );
+                        }),
                       ),
               ],
             ),

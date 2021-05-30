@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/screens/homepage/footer.dart';
 import 'package:moodbuster/screens/homepage/landing_about.dart';
@@ -9,6 +8,7 @@ import 'package:moodbuster/screens/homepage/landing_expert.dart';
 import 'package:moodbuster/screens/homepage/landing_main.dart';
 import 'package:moodbuster/screens/homepage/mob_footer.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
   HomePage({
     Key key,
@@ -26,32 +26,35 @@ class HomePage extends StatelessWidget {
         Container(
           height: screenHeight,
           color: lightskin,
-          child: ListView(
+          child: SingleChildScrollView(
             controller: scrollCtrl,
-            children: [
-              LandingPage(),
-              LandingBlogPage(),
-              LandingExpertPage(),
-              LandingChatPage(),
-              LandingAboutPage(),
-              SizedBox(height: 20),
-              screenWidth > 815 ? Footer() : MobFooter(),
-              Container(
-                color: Color(0XFF282828),
-                width: screenWidth,
-                child:
-                    Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-                  Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                        "2021 \u00a9 All rights reserved || Mood Buster",
-                        style: TextStyle(color: Colors.white)),
-                  ),
-                  Spacer()
-                ]),
-              ),
-            ],
+            child: Column(
+              children: [
+                LandingPage(),
+                LandingBlogPage(),
+                LandingExpertPage(),
+                LandingChatPage(),
+                LandingAboutPage(),
+                SizedBox(height: 20),
+                screenWidth > 815 ? Footer() : MobFooter(),
+                Container(
+                  color: Color(0XFF282828),
+                  width: screenWidth,
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                              "2021 \u00a9 All rights reserved || Mood Buster",
+                              style: TextStyle(color: Colors.white)),
+                        ),
+                        Spacer()
+                      ]),
+                ),
+              ],
+            ),
           ),
         ),
         InkWell(
@@ -61,9 +64,18 @@ class HomePage extends StatelessWidget {
             height: 60,
             width: 60,
             decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      spreadRadius: 0.8,
+                      color: Colors.brown[900],
+                      blurRadius: 3)
+                ],
                 color: Color(0XFFC19A6B).withOpacity(0.9),
                 borderRadius: BorderRadius.circular(50)),
-            child: Icon(Icons.expand_less),
+            child: Icon(
+              Icons.expand_less,
+              size: 38,
+            ),
           ),
         )
       ]),

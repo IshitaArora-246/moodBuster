@@ -30,7 +30,7 @@ class LandingBlogPage extends StatelessWidget {
               maxLines: 1,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 30, left: 30, bottom: 30),
+              padding: const EdgeInsets.only(right: 30, left: 30, bottom: 20),
               child: Text(
                 "There are many ways to access information and support about your mental health and wellbeing. Learn about mental health and receive information by reading our blogs.",
                 style: TextStyle(

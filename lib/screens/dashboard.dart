@@ -48,7 +48,7 @@ class DashBoardState extends State<DashBoard> {
         },
       },
       {
-        'name': 'Chat Forum',
+        'name': "Let's Talk",
         'onTap': () {
           setState(() {
             currentPage = 'chat';

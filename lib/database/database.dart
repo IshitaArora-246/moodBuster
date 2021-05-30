@@ -1,3 +1,4 @@
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -36,15 +37,6 @@ class DatabaseService {
     }
     return false;
   }
-
-  // Future<void> createNewDocument({@required String name}) async {
-  //   User user = auth.currentUser;
-  //   await userCollection.doc(user.uid).set({
-  //     'name': name,
-  //     'createdAt': DateFormat.yMMMd().format(DateTime.now()),
-  //     'phoneNumber': user.phoneNumber ?? "",
-  //   });
-  // }
 
   Future<void> upoadBlog({@required Map blogData}) async {
     blogCollection.add(blogData);

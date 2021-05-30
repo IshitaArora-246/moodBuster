@@ -6,6 +6,7 @@ import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/models/UserModel.dart';
 import 'package:moodbuster/screens/chat/profile.dart';
+import 'package:moodbuster/screens/no_chat_access.dart';
 import 'package:provider/provider.dart';
 
 class ChatForum extends StatefulWidget {
@@ -21,26 +22,27 @@ class _ChatForumState extends State<ChatForum> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     var userUid = Provider.of<UserModel>(context).uid;
-    bool isValidUser = userUid != null;
+    // bool isValidUser = userUid != null;
 
-    return Scaffold(
-        backgroundColor: lightskin.withOpacity(0.8),
-        body: Stack(
-          children: [
-            Row(
+    return userUid != null
+        ? Scaffold(
+            backgroundColor: lightskin.withOpacity(0.8),
+            body: Stack(
               children: [
-                Container(
-                  width: screenWidth > 815 ? screenWidth * 0.75 : screenWidth,
-                  padding: EdgeInsets.only(
-                      top: screenHeight * 0.12,
-                      left: 50,
-                      right: 50,
-                      bottom: screenHeight * 0.1),
-                  child: Column(
-                    children: [
-                      Expanded(
-                          child: isValidUser
-                              ? StreamBuilder<Object>(
+                Row(
+                  children: [
+                    Container(
+                      width:
+                          screenWidth > 815 ? screenWidth * 0.75 : screenWidth,
+                      padding: EdgeInsets.only(
+                          top: screenHeight * 0.12,
+                          left: 50,
+                          right: 50,
+                          bottom: screenHeight * 0.1),
+                      child: Column(
+                        children: [
+                          Expanded(
+                              child: StreamBuilder<Object>(
                                   stream: DatabaseService().getChats(),
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData) {
@@ -71,26 +73,19 @@ class _ChatForumState extends State<ChatForum> {
                                         ),
                                       );
                                     }
-                                  })
-                              : Container(
-                                  child: Center(
-                                    child: SpinKitCircle(
-                                      color: Colors.brown,
-                                      size: 50.0,
-                                    ),
-                                  ),
-                                )),
-                      SizedBox(height: 10),
-                      MessageField()
-                    ],
-                  ),
-                ),
-                Spacer(),
-                screenWidth > 815 ? ProfileSection() : SizedBox()
+                                  })),
+                          SizedBox(height: 10),
+                          MessageField()
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    screenWidth > 815 ? ProfileSection() : SizedBox()
+                  ],
+                )
               ],
-            )
-          ],
-        ));
+            ))
+        : NoChatAccess();
   }
 }
 

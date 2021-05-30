@@ -64,7 +64,7 @@ class LandingExpertPage extends StatelessWidget {
                                   // boxShadow: [BoxShadow(spreadRadius: 1, blurRadius: 5)],
                                   borderRadius: BorderRadius.circular(50)),
                               child: Center(
-                                child: Text("View More Blogs",
+                                child: Text("Talk to us",
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold)),
@@ -117,10 +117,9 @@ class LandingExpertPage extends StatelessWidget {
                                   color: tan.withOpacity(0.4),
                                   width: 2,
                                 ),
-                                // boxShadow: [BoxShadow(spreadRadius: 1, blurRadius: 5)],
                                 borderRadius: BorderRadius.circular(50)),
                             child: Center(
-                              child: Text("View More Blogs",
+                              child: Text("Talk to us",
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold)),
