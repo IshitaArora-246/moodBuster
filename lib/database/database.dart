@@ -83,8 +83,8 @@ class DatabaseService {
         .storage()
         .refFromURL('gs://mood-buster-app.appspot.com/')
         .child(photoPath);
-
-    return await reference.getDownloadURL();
+    final dpUrl = await reference.getDownloadURL();
+    return dpUrl;
   }
 
 // To open file dialog box  in order to select image
@@ -119,6 +119,7 @@ class DatabaseService {
           .future
           .then((_) {
         userCollection.doc(user.uid).update({'photo_url': path});
+        return Future.value(1);
       });
     });
     print("Profile picture updated in firebase and shown to user");

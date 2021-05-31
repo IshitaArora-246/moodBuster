@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:moodbuster/constants/textStyle.dart';
+import 'package:moodbuster/models/UserModel.dart';
 import 'package:moodbuster/screens/chat/mobile_profile_screen.dart';
+import 'package:moodbuster/utils/authentication.dart';
 import 'package:moodbuster/widgets/dialog_box.dart';
 import 'package:moodbuster/widgets/nav_item.dart';
+import 'package:provider/provider.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
@@ -15,6 +18,7 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    final user = Provider.of<UserModel>(context);
 
     return Container(
         width: screenWidth * 0.5,
@@ -38,36 +42,47 @@ class MyDrawer extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
                 child: InkWell(
                     onTap: () {
-                      _showMenuDialog(context);
+                      print("Login Button tapped!");
+                      if (user == null)
+                        _showMenuDialog(context);
+                      else
+                        FirebaseAuthService().signOut();
                     },
                     child: Container(
                         child: Text(
-                      "Sign-up/Login",
+                      user == null ? "Sign-up/Login" : "Sign-out",
                       style: paraStyle,
                     )))),
-            Padding(
+            user == null
+                ? SizedBox()
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 16),
+                    child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MobProfile()));
+                        },
+                        child: Container(
+                            child: Text(
+                          "Profile",
+                          style: paraStyle,
+                        )))),
+            ...navItems.map((e) {
+              if (user == null && e['name'] == "Let's Talk") {
+                return SizedBox();
+              }
+              return Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
-                child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MobProfile()));
-                    },
-                    child: Container(
-                        child: Text(
-                      "Profile",
-                      style: paraStyle,
-                    )))),
-            ...navItems.map((e) => Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
-                  child: NavItem(
-                    name: e['name'],
-                    onTap: e['onTap'],
-                  ),
-                )),
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
+                child: NavItem(
+                  name: e['name'],
+                  onTap: e['onTap'],
+                ),
+              );
+            }),
           ],
         ));
   }

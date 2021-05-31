@@ -25,8 +25,15 @@ class _ProfileSectionState extends State<ProfileSection> {
   }
 
   Future<int> setDoc() async {
+    print('@@@@@@@@@ setDoc');
     userDoc = await DatabaseService().getDoc();
-    url = await DatabaseService().downloadUrl(userDoc['photo_url']);
+    print('@@@@@@@@@ userDoc');
+    if (userDoc['photo_url'] == null || userDoc['photo_url'] == "")
+      url = null;
+    else
+      url = await DatabaseService().downloadUrl(userDoc['photo_url']);
+    print('@@@@@@@@@ ho gya download');
+
     return Future.value(1);
   }
 
@@ -35,8 +42,9 @@ class _ProfileSectionState extends State<ProfileSection> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     var _currentUser = Provider.of<UserModel>(context);
-    if (_currentUser.uid == null) return Container();
 
+    if (_currentUser.uid == null) return Container();
+    print("@@@@@@@@@ ${_currentUser.uid}");
     return Container(
       height: screenHeight,
       width: screenWidth * 0.25,
@@ -72,30 +80,38 @@ class _ProfileSectionState extends State<ProfileSection> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        IconButton(
-                            icon: Container(
-                              padding: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                  color: Colors.brown,
-                                  borderRadius: BorderRadius.circular(3)),
+                        InkWell(
+                          onTap: () {
+                            DatabaseService().uploadImageToStorage();
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color: Colors.brown,
+                                borderRadius: BorderRadius.circular(3)),
+                            child: Center(
                               child: Icon(
-                                Icons.edit_rounded,
+                                Icons.add_a_photo_outlined,
                                 color: Colors.brown[50],
-                                size: 13,
+                                size: 24,
                               ),
                             ),
-                            onPressed: () {
-                              DatabaseService().uploadImageToStorage();
-                            })
+                          ),
+                        ),
                       ],
                     ),
                     Center(
                         child: Center(
-                      child: CircleAvatar(
-                        backgroundColor: Colors.black,
-                        backgroundImage: NetworkImage(url.toString()),
-                        radius: 75,
-                      ),
+                      child: url == null
+                          ? Icon(
+                              Icons.person_outlined,
+                              size: 50,
+                            )
+                          : CircleAvatar(
+                              backgroundColor: Colors.black,
+                              backgroundImage: NetworkImage(url.toString()),
+                              radius: 75,
+                            ),
                     )
                         // child: Container(
                         //   height: 150,
@@ -148,7 +164,7 @@ class _ProfileSectionState extends State<ProfileSection> {
                                 ),
                                 borderRadius: BorderRadius.circular(50)),
                             child: Center(
-                              child: Text("Update Profile Picture",
+                              child: Text("Refresh",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 16,

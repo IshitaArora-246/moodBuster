@@ -21,7 +21,11 @@ class _MobProfileState extends State<MobProfile> {
 
   Future<int> setDoc() async {
     userDoc = await DatabaseService().getDoc();
-    url = await DatabaseService().downloadUrl(userDoc['photo_url']);
+    if (userDoc['photo_url'] == null || userDoc['photo_url'] == "")
+      url = null;
+    else
+      url = await DatabaseService().downloadUrl(userDoc['photo_url']);
+
     return Future.value(1);
   }
 
@@ -76,46 +80,40 @@ class _MobProfileState extends State<MobProfile> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                IconButton(
-                                    icon: Container(
-                                      padding: EdgeInsets.all(3),
-                                      decoration: BoxDecoration(
-                                          color: Colors.brown,
-                                          borderRadius:
-                                              BorderRadius.circular(3)),
+                                InkWell(
+                                  onTap: () {
+                                    DatabaseService().uploadImageToStorage();
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                        color: Colors.brown,
+                                        borderRadius: BorderRadius.circular(3)),
+                                    child: Center(
                                       child: Icon(
-                                        Icons.edit_rounded,
+                                        Icons.add_a_photo_outlined,
                                         color: Colors.brown[50],
-                                        size: 13,
+                                        size: 20,
                                       ),
                                     ),
-                                    onPressed: () {
-                                      DatabaseService().uploadImageToStorage();
-                                    })
+                                  ),
+                                ),
                               ],
                             ),
                             Center(
                                 child: Center(
-                              child: CircleAvatar(
-                                backgroundColor: Colors.black,
-                                backgroundImage: NetworkImage(url.toString()),
-                                radius: 75,
-                              ),
-                            )
-                                // child: Container(
-                                //   height: 150,
-                                //   width: 150,
-                                //   decoration: BoxDecoration(
-                                //       borderRadius: BorderRadius.circular(80),
-                                //       boxShadow: [
-                                //         BoxShadow(
-                                //             spreadRadius: 10,
-                                //             blurRadius: 10,
-                                //             color: Colors.black.withOpacity(0.1))
-                                //       ]),
-                                //   child: Image.network(url.toString()),
-                                // ),
-                                ),
+                              child: url == null
+                                  ? Icon(
+                                      Icons.person_outlined,
+                                      size: 50,
+                                    )
+                                  : CircleAvatar(
+                                      backgroundColor: Colors.black,
+                                      backgroundImage:
+                                          NetworkImage(url.toString()),
+                                      radius: 75,
+                                    ),
+                            )),
                             SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -155,7 +153,7 @@ class _MobProfileState extends State<MobProfile> {
                                         borderRadius:
                                             BorderRadius.circular(50)),
                                     child: Center(
-                                      child: Text("Update Profile Picture",
+                                      child: Text("Refresh",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: 16,
