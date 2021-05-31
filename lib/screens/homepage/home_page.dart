@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moodbuster/constants/textStyle.dart';
+import 'package:moodbuster/screens/dashboard.dart';
 import 'package:moodbuster/screens/homepage/footer.dart';
 import 'package:moodbuster/screens/homepage/landing_about.dart';
 import 'package:moodbuster/screens/homepage/landing_blog.dart';
@@ -12,7 +13,9 @@ import 'package:moodbuster/screens/homepage/mob_footer.dart';
 class HomePage extends StatelessWidget {
   HomePage({
     Key key,
+    this.parent,
   }) : super(key: key);
+  final DashBoardState parent;
 
   ScrollController scrollCtrl = ScrollController();
 
@@ -20,7 +23,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Stack(alignment: Alignment.bottomRight, children: [
         Container(
@@ -57,27 +59,29 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        InkWell(
-          onTap: scrollToTop,
-          child: Container(
-            margin: EdgeInsets.only(right: 40, bottom: 40),
-            height: 60,
-            width: 60,
-            decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      spreadRadius: 0.8,
-                      color: Colors.brown[900],
-                      blurRadius: 3)
-                ],
-                color: Color(0XFFC19A6B).withOpacity(0.9),
-                borderRadius: BorderRadius.circular(50)),
-            child: Icon(
-              Icons.expand_less,
-              size: 38,
-            ),
-          ),
-        )
+        screenWidth > 815
+            ? InkWell(
+                onTap: scrollToTop,
+                child: Container(
+                  margin: EdgeInsets.only(right: 40, bottom: 40),
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            spreadRadius: 0.8,
+                            color: Colors.brown[900],
+                            blurRadius: 3)
+                      ],
+                      color: Color(0XFFC19A6B).withOpacity(0.9),
+                      borderRadius: BorderRadius.circular(50)),
+                  child: Icon(
+                    Icons.expand_less,
+                    size: 38,
+                  ),
+                ),
+              )
+            : SizedBox()
       ]),
     );
   }

@@ -4,7 +4,9 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
+import 'package:moodbuster/models/current_page.dart';
 import 'package:moodbuster/screens/blog_page.dart';
+import 'package:provider/provider.dart';
 
 class LandingBlogPage extends StatelessWidget {
   const LandingBlogPage({

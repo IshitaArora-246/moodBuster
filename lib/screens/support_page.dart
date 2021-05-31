@@ -14,7 +14,7 @@ class _SupportPageState extends State<SupportPage> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     final formKey = GlobalKey<FormState>();
     TextEditingController namecontroller = TextEditingController();
     TextEditingController feedbackController = TextEditingController();
@@ -24,10 +24,11 @@ class _SupportPageState extends State<SupportPage> {
       backgroundColor: lightskin,
       body: Container(
           margin: EdgeInsets.only(
-              top: screenHeight * 0.12,
-              left: screenWidth * 0.17,
-              right: screenWidth * 0.17,
-              bottom: screenHeight * 0.1),
+            top: screenHeight * 0.12,
+            left: screenWidth * 0.15,
+            right: screenWidth * 0.15,
+            bottom: 50,
+          ),
           child: SingleChildScrollView(
             child: Form(
               key: formKey,
@@ -39,7 +40,10 @@ class _SupportPageState extends State<SupportPage> {
                       "Get in touch with experts",
                       textAlign: TextAlign.center,
                       style: headingStyle.copyWith(
-                          fontSize: 45, wordSpacing: 2, letterSpacing: 1.5),
+                          height: 1,
+                          fontSize: screenWidth > 768 ? 45 : 30,
+                          wordSpacing: 2,
+                          letterSpacing: 1.2),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -57,11 +61,11 @@ class _SupportPageState extends State<SupportPage> {
                   SizedBox(height: 20),
                   Row(
                     children: [
-                      buildTextbox(10, feedbackController,
+                      buildTextbox(8, feedbackController,
                           "Tell us about your experience", formKey),
                     ],
                   ),
-                  SizedBox(height: 40),
+                  SizedBox(height: 20),
                   HoverButton(
                     onpressed: () async {
                       Map<String, dynamic> feedback = {

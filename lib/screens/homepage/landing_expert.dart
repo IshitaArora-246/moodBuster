@@ -27,7 +27,7 @@ class LandingExpertPage extends StatelessWidget {
                     fit: BoxFit.contain,
                   )),
               Container(
-                  width: screenWidth,
+                  width: screenWidth * 0.45,
                   padding: EdgeInsets.symmetric(horizontal: 80),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

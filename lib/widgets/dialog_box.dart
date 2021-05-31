@@ -89,7 +89,7 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                                             }),
                                       ],
                                     ),
-                                    SizedBox(height: 35),
+                                    SizedBox(height: 5),
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -118,7 +118,7 @@ class _ShowMenuDialogBoxState extends State<ShowMenuDialogBox> {
                                               color: Color(0XFFA6DAE8),
                                               width: 2),
                                         ),
-                                        labelText: "Email Address",
+                                        labelText: "Email",
                                         labelStyle: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           color: Colors.grey.shade700,
