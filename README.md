@@ -14,8 +14,8 @@ Mental Health influences how you think, feel, and behave in daily life. It also 
 
 ![Screenshot](https://github.com/IshitaArora-246/moodBuster/blob/userProfile/screenshots/support%20panel.png)
 
-## Link to Website
-https://mood-buster-app.web.app/#/
+<!-- ## Link to Website -->
+<!-- https://mood-buster-app.web.app/#/ -->
 
 ## Tech/framework used
 - Flutter
