@@ -4,9 +4,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:hovering/hovering.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
-import 'package:moodbuster/models/current_page.dart';
 import 'package:moodbuster/screens/blog_page.dart';
-import 'package:provider/provider.dart';
 
 class LandingBlogPage extends StatelessWidget {
   const LandingBlogPage({
@@ -33,13 +31,16 @@ class LandingBlogPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 30, left: 30, bottom: 20),
-              child: Text(
-                "There are many ways to access information and support about your mental health and wellbeing. Learn about mental health and receive information by reading our blogs.",
-                style: TextStyle(
-                  fontSize: 20,
+              child: Container(
+                child: Text(
+                  "There are many ways to access information and support about your mental health and wellbeing. Learn about mental health and receive information by reading our blogs.",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                  
+                  textAlign: TextAlign.center,
+                  maxLines: 10,
                 ),
-                textAlign: TextAlign.center,
-                maxLines: 7,
               ),
             ),
             StreamBuilder<Object>(

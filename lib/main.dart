@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:moodbuster/constants/textStyle.dart';
 import 'package:moodbuster/database/database.dart';
 import 'package:moodbuster/models/UserModel.dart';
-import 'package:moodbuster/models/current_page.dart';
 import 'package:moodbuster/screens/dashboard.dart';
 import 'package:moodbuster/utils/authentication.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(providers: [
     Provider(create: (_) => FirebaseAuthService()),
-    ChangeNotifierProvider(create: (_) => MyPage()),
+    // ChangeNotifierProvider(create: (_) => MyPage()),
     StreamProvider(
         create: (context) =>
             context.read<FirebaseAuthService>().onAuthStateChanged,

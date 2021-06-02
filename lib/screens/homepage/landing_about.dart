@@ -83,21 +83,21 @@ class LandingAboutPage extends StatelessWidget {
                 )),
             Container(
                 width: screenWidth,
-                padding: EdgeInsets.symmetric(horizontal: 80),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "About Us",
                         style: headingStyle.copyWith(
-                            fontSize: 40, fontWeight: FontWeight.w800),
+                            fontSize: 28, fontWeight: FontWeight.w800),
                         maxLines: 1,
                       ),
                       SizedBox(height: 35),
                       Text(
                         "Mood Buster is a growing community working towards changing the way individuals think & act about problems related to Mental Health",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                         ),
                         maxLines: 4,
                       ),

@@ -78,8 +78,23 @@ class _ProfileSectionState extends State<ProfileSection> {
                   children: [
                     SizedBox(height: 15),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
+                        Spacer(),
+                        Center(
+                          child: url == null
+                              ? Icon(
+                                  Icons.person_outlined,
+                                  size: 50,
+                                )
+                              : CircleAvatar(
+                                  backgroundColor: Colors.black,
+                                  backgroundImage: NetworkImage(url.toString()),
+                                  radius: 75,
+                                ),
+                        ),
+                        Spacer(),
                         InkWell(
                           onTap: () {
                             DatabaseService().uploadImageToStorage();
@@ -87,46 +102,39 @@ class _ProfileSectionState extends State<ProfileSection> {
                           child: Container(
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                                color: Colors.brown,
+                                gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0XFFC19A6B).withOpacity(0.9),
+                                      Color(0XFFC19A6B).withOpacity(0.8)
+                                    ]),
                                 borderRadius: BorderRadius.circular(3)),
                             child: Center(
                               child: Icon(
                                 Icons.add_a_photo_outlined,
-                                color: Colors.brown[50],
+                                color: Colors.brown[900],
                                 size: 24,
                               ),
                             ),
                           ),
                         ),
                       ],
+
+                      // child: Container(
+                      //   height: 150,
+                      //   width: 150,
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(80),
+                      //       boxShadow: [
+                      //         BoxShadow(
+                      //             spreadRadius: 10,
+                      //             blurRadius: 10,
+                      //             color: Colors.black.withOpacity(0.1))
+                      //       ]),
+                      //   child: Image.network(url.toString()),
+                      // ),
                     ),
-                    Center(
-                        child: Center(
-                      child: url == null
-                          ? Icon(
-                              Icons.person_outlined,
-                              size: 50,
-                            )
-                          : CircleAvatar(
-                              backgroundColor: Colors.black,
-                              backgroundImage: NetworkImage(url.toString()),
-                              radius: 75,
-                            ),
-                    )
-                        // child: Container(
-                        //   height: 150,
-                        //   width: 150,
-                        //   decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(80),
-                        //       boxShadow: [
-                        //         BoxShadow(
-                        //             spreadRadius: 10,
-                        //             blurRadius: 10,
-                        //             color: Colors.black.withOpacity(0.1))
-                        //       ]),
-                        //   child: Image.network(url.toString()),
-                        // ),
-                        ),
                     SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -84,14 +84,14 @@ class LandingExpertPage extends StatelessWidget {
                 )),
             Container(
                 width: screenWidth,
-                padding: EdgeInsets.symmetric(horizontal: 80),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "We're here for you during COVID-19",
                         style: headingStyle.copyWith(
-                            fontSize: 30, fontWeight: FontWeight.w800),
+                            fontSize: 28, fontWeight: FontWeight.w800),
                         maxLines: 4,
                         textAlign: TextAlign.center,
                       ),

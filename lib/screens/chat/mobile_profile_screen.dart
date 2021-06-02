@@ -78,8 +78,24 @@ class _MobProfileState extends State<MobProfile> {
                           children: [
                             SizedBox(height: 15),
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
+                                Spacer(),
+                                Center(
+                                  child: url == null
+                                      ? Icon(
+                                          Icons.person_outlined,
+                                          size: 50,
+                                        )
+                                      : CircleAvatar(
+                                          backgroundColor: Colors.black,
+                                          backgroundImage:
+                                              NetworkImage(url.toString()),
+                                          radius: 75,
+                                        ),
+                                ),
+                                Spacer(),
                                 InkWell(
                                   onTap: () {
                                     DatabaseService().uploadImageToStorage();
@@ -87,12 +103,19 @@ class _MobProfileState extends State<MobProfile> {
                                   child: Container(
                                     padding: EdgeInsets.all(5),
                                     decoration: BoxDecoration(
-                                        color: Colors.brown,
+                                        gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Color(0XFFC19A6B)
+                                                  .withOpacity(0.9),
+                                              Color(0XFFC19A6B).withOpacity(0.8)
+                                            ]),
                                         borderRadius: BorderRadius.circular(3)),
                                     child: Center(
                                       child: Icon(
                                         Icons.add_a_photo_outlined,
-                                        color: Colors.brown[50],
+                                        color: Colors.brown[900],
                                         size: 20,
                                       ),
                                     ),
@@ -100,20 +123,6 @@ class _MobProfileState extends State<MobProfile> {
                                 ),
                               ],
                             ),
-                            Center(
-                                child: Center(
-                              child: url == null
-                                  ? Icon(
-                                      Icons.person_outlined,
-                                      size: 50,
-                                    )
-                                  : CircleAvatar(
-                                      backgroundColor: Colors.black,
-                                      backgroundImage:
-                                          NetworkImage(url.toString()),
-                                      radius: 75,
-                                    ),
-                            )),
                             SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
