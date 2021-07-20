@@ -1,5 +1,8 @@
-## Mood Buster
+# Mood Buster
 A growing community working towards changing the way individuals think and act to mental health problems.
+
+## Link to Website
+[MoodBuster WebApp](https://mood-buster-app.web.app/#/)
 
 ## Motivation
 Mental Health influences how you think, feel, and behave in daily life. It also determines how we handle stress, relate to others, and make choices. Mental health is important at every stage of life, from childhood and adolescence through adulthood.
@@ -13,9 +16,6 @@ Mental Health influences how you think, feel, and behave in daily life. It also 
 ![Screenshot](https://github.com/IshitaArora-246/moodBuster/blob/userProfile/screenshots/chat%20screen.png)
 
 ![Screenshot](https://github.com/IshitaArora-246/moodBuster/blob/userProfile/screenshots/support%20panel.png)
-
-<!-- ## Link to Website -->
-<!-- https://mood-buster-app.web.app/#/ -->
 
 ## Tech/framework used
 - Flutter
